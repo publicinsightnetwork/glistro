@@ -5,6 +5,7 @@ gem 'rails', '3.2.6'
 gem 'sqlite3'
 gem 'simple_form'
 gem 'devise'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required
@@ -20,16 +21,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+# Other development gems (non asset pipeline)
+group :development do
+  gem 'letter_opener'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# Production gems
+group :production do
+  gem 'mysql2'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

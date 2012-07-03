@@ -19,6 +19,9 @@ Glistro::Application.configure do
   # default mailer url for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # deliver with letter-opener in dev
+  config.action_mailer.delivery_method = :letter_opener
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
