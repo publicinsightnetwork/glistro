@@ -6,4 +6,7 @@ Glistro::Application.routes.draw do
   # splash page
   root :to => "home#index"
 
+  # static page routing
+  match 'static/:action' => 'static#:action'
+
 end

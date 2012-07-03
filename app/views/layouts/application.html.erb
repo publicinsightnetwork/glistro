@@ -13,7 +13,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <title>Glistro - American Public Media</title>
 
   <!-- Included CSS Files -->
   <%= stylesheet_link_tag    "application" %>
@@ -24,10 +24,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
+  <%= render 'layouts/header' %>
+
+  <div id="main" class="row">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </div>
+
+  <%= render 'layouts/footer' %>
 </body>
 </html>
