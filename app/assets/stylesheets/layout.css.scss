@@ -1,25 +1,44 @@
 // Place all the styles related to the general application layout here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
 body {
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-#header {
+header {
   background: #444;
+  color: #fff;
   font-weight: bold;
   margin-bottom: 2em;
-  color: #fff;
 }
 
-#header h3 { float: left; margin: .5em 0; color: #fff; }
+header h3 { 
+  color: #fff;
+  float: left; 
+  margin: .4em 0; 
+}
 
 p {
   font-size: 14px;
   line-height: 1.5;
 }
 
-#tagline {
+#tagline { 
   float: left;
   color: #ccc;
   margin: 1.7em 0 0 1em;
@@ -28,9 +47,10 @@ p {
 div.panel {
   background: #f9f9f9;
   border: 1px solid #eee;
+  padding: 10px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
+  border-radius: 2px;  
 }
 
 div.panel .columns {
@@ -45,26 +65,11 @@ div.panel .columns {
   margin-bottom: .6em;
 }
 
-#map {
-  position: relative;
-  clear: both;
-  padding-top: 2em;
-  margin: 0 -20px;
-  overflow: hidden;
-}
-
-#map:before {
-  max-width: 103%;
-  position: absolute;
-  content: url(../images/map-grad-top.png);
-  z-index: 9999;
-  overflow: hidden;
-}
-
 
 /* -----------------------------------------
-   Page Name 1
+   Slide Content
 ----------------------------------------- */
+
 
 .col-left {
   float: left;
@@ -86,7 +91,7 @@ div.panel .columns {
   padding: 20px;
   background: #f5f5f5;
   border: 1px solid #e7e7e7;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #fff;  
   -moz-box-shadow: 0 0 5px #eee;
   -webkit-box-shadow: 0 0 5px #eee;
   box-shadow: 0 0 5px #eee;
@@ -94,35 +99,84 @@ div.panel .columns {
 
 #slideshow h5 {
   margin: .3em 0 .5em 0;
+  font-weight: bold;
 }
 
-.desc { color: #777; line-height: 1.4; }
-.desc a, .desc a:visited { font-weight: bold; }
-
-.arrows {
-  float: right;
+.desc { 
+  color: #777; 
+  line-height: 1.4; 
+  
+  a, a:visited { 
+    font-weight: bold;
+  }
 }
 
-.arrows span {
-  background: #444;
-  padding: 8px 7px 7px;
-  color: #ccc;
-  text-shadow: none;
-  font-size: 13px;
+.crop {
+  max-height: 150px;
+  overflow: hidden;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; 
 }
 
-a.arrow, a.arrow:visited {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  line-height: 0;
-  opacity: 1;
-  padding: 7px 15px;
-  color: #fff;
+#number {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 1em;
+}
+
+
+
+/* -----------------------------------------
+   Map
+----------------------------------------- */
+
+#map {
   position: relative;
+  clear: both;
+  padding-top: 2em;
+  margin: 0 -20px;
+  overflow: hidden;
 }
 
-a.arrow:hover {
-  opacity: .8;
+#map:before {
+  max-width: 103%;
+  position: absolute;
+  content: url(/assets/map-grad-top.png);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+
+/* -----------------------------------------
+   Arrows
+----------------------------------------- */
+
+.arrows { 
+  float: right; 
+
+  span {
+    background: #444;
+    padding: 7px;
+    color: #ccc;
+    text-shadow: none;
+    font-size: 13px;
+  }
+  
+  a, a:visited {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    line-height: 0;
+    opacity: 1;
+    padding: 7px 15px;
+    color: #fff;
+    position: relative;  
+    
+    &:hover {
+      opacity: .8;
+    }
+  }
 }
 
 #arrow-left {
@@ -141,7 +195,7 @@ a.arrow:hover {
   -moz-border-radius-topright: 2px;
   -moz-border-radius-bottomright: 2px;
   border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 2px;  
   background: #66cc00;
 }
 
@@ -161,20 +215,6 @@ a.arrow:hover {
   font-size: 40px;
 }
 
-.crop {
-  max-height: 150px;
-  overflow: hidden;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-
-#number {
-  text-align: center;
-  font-size: 12px;
-  color: #999;
-  padding: 1em;
-}
 
 #credit {
   font-size: 12px;
@@ -189,6 +229,32 @@ a.arrow:hover {
 #credit span { color: #ddd; }
 
 
+
+/* -----------------------------------------
+   Sidebar
+----------------------------------------- */
+
+#sidebar { 
+  margin-top: 3em; 
+
+  ol { margin: 0; }
+
+  li {
+    float: left;
+    width: 40%;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px; 
+    margin-bottom: 1em;
+    
+    &:nth-child(odd) {
+      margin-right: 1em;
+    }
+  }
+}
+
+
+
 /* -----------------------------------------
    Clearfix
 ----------------------------------------- */
@@ -196,15 +262,15 @@ a.arrow:hover {
 /* For modern browsers */
 .cf:before,
 .cf:after {
-  content:"";
-  display:table;
+    content:"";
+    display:table;
 }
 
 .cf:after {
-  clear:both;
+    clear:both;
 }
 
 /* For IE 6/7 (trigger hasLayout) */
 .cf {
-  *zoom:1;
+    *zoom:1;
 }
