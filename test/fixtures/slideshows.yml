@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ident: MyString
+  title: MyString
+  desc: MyText
+  user_id: 1
+  map_type: MyString
+  map_height: 1
+  slide_height: 1
+
+two:
+  ident: MyString
+  title: MyString
+  desc: MyText
+  user_id: 1
+  map_type: MyString
+  map_height: 1
+  slide_height: 1

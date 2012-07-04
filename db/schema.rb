@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703182524) do
+ActiveRecord::Schema.define(:version => 20120704151819) do
+
+  create_table "slideshows", :force => true do |t|
+    t.string   "ident",        :null => false
+    t.string   "title"
+    t.text     "desc"
+    t.string   "status"
+    t.string   "map_type"
+    t.integer  "map_height"
+    t.integer  "slide_height"
+    t.datetime "blame_cre_at"
+    t.datetime "blame_upd_at"
+    t.integer  "blame_cre_by"
+    t.integer  "blame_upd_by"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
