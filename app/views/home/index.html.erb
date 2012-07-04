@@ -2,3 +2,8 @@
 
 <a href="static/slideshow">slideshow view</a>
 <a href="static/slideshow-edit">slideshow edit</a>
+
+<% if user_signed_in? %>
+  <br/><br/>
+  <%= link_to 'New Slideshow', new_slideshow_path, :class => 'nice radius button blue' %>
+<% end %>

@@ -1,5 +1,5 @@
 class SlideshowsController < ApplicationController
-  before_filter :lookup, :except => [:index, :new]
+  before_filter :lookup, :except => [:index, :new, :create]
   before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
   before_filter :confirm_owner!, :only => [:edit, :update, :destroy]
 
