@@ -1,8 +1,22 @@
 <header id="header" class="cf">
   <div class="row">
-    <div class="twelve columns">
+
+    <div class="eight columns">
       <h3>Glistró</h3>
       <div id="tagline">Create and embed slideshows</div>
     </div>
+
+    <% if user_signed_in? %>
+      <div class="login four columns right-align">
+        <span>Welcome, <%= current_user.email %></span>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'nice radius button green small' %>
+      </div>
+    <% else %>
+      <div class="login four columns right-align">
+        <%= link_to 'Sign me up', new_user_registration_path, :class => 'nice radius button green small' %>
+        <%= link_to 'Login', new_user_session_path, :class => 'nice radius button white small' %>
+      </div>
+    <% end %>
+
   </div>
 </header>
