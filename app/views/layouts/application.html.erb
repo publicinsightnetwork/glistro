@@ -24,15 +24,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
+  <div id="body-wrapper">
 
-  <div id="alerts" class="row">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+    <%= render 'layouts/header' %>
 
-  <div id="main" class="row">
-    <%= yield %>
+    <div id="alerts" class="row">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
+    <div id="main" class="row">
+      <%= yield %>
+    </div>
+
+    <!-- sticky footer -->
+    <div id="footer-push"></div>
   </div>
 
   <%= render 'layouts/footer' %>

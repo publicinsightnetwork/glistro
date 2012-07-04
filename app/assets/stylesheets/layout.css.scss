@@ -376,11 +376,13 @@ div.panel .columns {
 
 
 /* -----------------------------------------
-   Clearfix
+   Make footer sticky
 ----------------------------------------- */
-
-footer {
-  padding: 20px;
+html, body { height: 100%; }
+#body-wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -60px; }
+#footer-push { height: 60px; }
+#footer {
+  line-height: 59px;
   background: #eee;
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #ddd;
