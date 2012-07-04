@@ -1,5 +1,50 @@
 <h1>New slideshow</h1>
 
-<%= render 'form' %>
+<%= form_for(@slideshow) do |f| %>
+
+  <% if form_errors(@slideshow) %>
+    <div class="row">
+      <div class="six mobile-four columns offset-by-two alert-box alert">
+        <p><%= form_errors(@slideshow) %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <label class="right">Identifier:</label>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :ident, :class => "five", :placeholder => "a unique string to be used in the slideshow url" %>
+      <%= form_errors(@slideshow, :ident) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <label class="right">Title:</label>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_field :title, :class => "five", :placeholder => "header element" %>
+      <%= form_errors(@slideshow, :title) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="two mobile-one columns">
+      <label class="right">Description:</label>
+    </div>
+    <div class="ten mobile-three columns">
+      <%= f.text_area :desc, :class => "five", :placeholder => "describe the contents of the slideshow" %>
+      <%= form_errors(@slideshow, :desc) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="ten mobile-four columns offset-by-two">
+      <button type="submit" class="nice radius button blue">Create</button>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'Back', slideshows_path %>

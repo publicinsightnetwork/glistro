@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @slideshow.ident %></h1>
 
+<p>Created by <%= @slideshow.blame_cre_user.email %> on <%= @slideshow.blame_cre_at %></p>
 
 <%= link_to 'Edit', edit_slideshow_path(@slideshow) %> |
-<%= link_to 'Back', slideshows_path %>
+<%= link_to 'Back', root_path %>

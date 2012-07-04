@@ -1,4 +1,5 @@
 class Slideshow < ActiveRecord::Base
+  after_initialize :default_values
   blameable
 
   # accessible attributes
@@ -41,5 +42,14 @@ class Slideshow < ActiveRecord::Base
       :greater_than => 49,
       :less_than => 1000,
     }
+
+  private
+
+  def default_values
+    self.status ||= DRAFT
+    self.map_type ||= 'stamen-toner'
+    self.map_height ||= 300
+    self.slide_height ||= 200
+  end
 
 end
