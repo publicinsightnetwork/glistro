@@ -29,10 +29,12 @@ class Slide < ActiveRecord::Base
 
   # transate to an object config
   def to_config
+    partials = { TEXT_ONLY   => 'slides/text_only', LEFT_IMAGE  => 'slides/left_image',
+      RIGHT_IMAGE => 'slides/right_image', FULL_IMAGE  => 'slides/full_image' }
     {
       :marker => self.marker_lat ? [self.marker_lat, self.marker_lng] : nil,
       :center => nil, #TODO
-      :html   => 'hello world',
+      :html   => render_slide_partial(partials[self.layout]),
       :popup  => 'hello world',
     }
   end
@@ -47,6 +49,12 @@ class Slide < ActiveRecord::Base
     # give it a random midwestern location
     self.marker_lat ||= (rand * (45-30) + 30)
     self.marker_lng ||= -(rand * (115-80) + 80)
+  end
+
+  def render_slide_partial(partial)
+    view = ActionView::Base.new(ActionController::Base.view_paths)
+    view.extend ApplicationHelper
+    view.render(:partial => partial, :locals => { :slide => self })
   end
 
 end
