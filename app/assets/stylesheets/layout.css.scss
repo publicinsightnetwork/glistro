@@ -395,8 +395,14 @@ header {
    Slide Edit
 ----------------------------------------- */
 
-textarea { min-height: 250px; }
+textarea { min-height: 220px; }
 
+#allowed-html {
+  margin-bottom: 1em;
+  padding: 0 1em;
+  font-size: 12px;
+  color: #666;
+}
 
 /* -----------------------------------------
    Sidebar

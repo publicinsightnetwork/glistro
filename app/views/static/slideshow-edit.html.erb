@@ -1,46 +1,49 @@
 <div class="eight columns">
-  <h3>The Cast of Party Down</h3>
+  <div id="slideshow-info">  
+    <h3 id="slideshow-title">The Cast of Party Down</h3>
+    <div id="slideshow-desc">
+    Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+    </div>
+  </div>
 
   <!-- Grid Example -->
-  <div class="row">
-    <div id="slideshow" class="cf">
-      <div id="slide-actions">
-        <ul>
-          <li><a href="#" id="edit"><%= image_tag "icons/glyphicons_030_pencil.png" %></a></li>
-          <li><a href="#" id="delete"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
-          <li><a href="#" id="new"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
-        </ul>
-      </div>
+  <div id="slideshow" class="cf">
+    <div id="slide-actions">
+      <ul>
+        <li><a href="#" id="edit"><%= image_tag "icons/glyphicons_030_pencil.png" %></a></li>
+        <li><a href="#" id="delete"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
+        <li><a href="#" id="new"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
+      </ul>
+    </div>
     
-      <div class="col-left">
-        <div class="crop"><%= image_tag "example/henry.jpg" %></div>
+    <div class="col-left">
+      <div class="crop"><%= image_tag "example/henry.jpg" %></div>
+    </div>
+
+    <div class="col-right">
+      <div class="arrows">
+        <a href="#" id="arrow-left" class="arrow"></a> <span>1 of 25</span>
+        <a href="#" id="arrow-right" class="arrow"></a>
       </div>
 
-      <div class="col-right">
-        <div class="arrows">
-          <a href="#" id="arrow-left" class="arrow"></a> <span>1 of 25</span>
-          <a href="#" id="arrow-right" class="arrow"></a>
-        </div>
+      <h5>Henry Pollard, 33</h5>
+      <div id="slide-datetime">June 30, 2012 at 3:34 p.m. Central</div>
+      <div id="slide-desc">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis <a href="#">dapibus posuere</a> velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+      </div> 
+    </div>
 
-        <h5>Henry Pollard, 33</h5>
-        <div id="slide-datetime">June 30, 2012 at 3:34 p.m. Central</div>
-        <div id="slide-desc">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis <a href="#">dapibus posuere</a> velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-        </div> 
-      </div>
+    <div id="map">
+      <iframe width="664" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=St+Paul,+Ramsey,+Minnesota&amp;t=m&amp;ll=44.954959,-93.089304&amp;spn=0.021259,0.057249&amp;z=14&amp;output=embed"></iframe>
+    </div>
 
-      <div id="map">
-        <iframe width="664" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;hq=&amp;hnear=St+Paul,+Ramsey,+Minnesota&amp;t=m&amp;ll=44.954959,-93.089304&amp;spn=0.021259,0.057249&amp;z=14&amp;output=embed"></iframe>
-      </div>
-
-      <div id="credit">
-        Powered by <a href="#">Glistro</a> <span>|</span> a product of <a href="#">American Public Media</a>
-      </div>
+    <div id="credit">
+      Powered by <a href="#">Glistro</a> <span>|</span> a product of <a href="#">American Public Media</a>
     </div>
   </div>
 </div>
 
 <div class="four columns" id="sidebar">
-  <div class="panel" style="margin-top: 1em;">
+  <div class="panel" style="margin-top: 8em;">
     <form>
       <input type="text" placeholder="Slide title" />
       
@@ -64,6 +67,13 @@
       </div>
          
       <textarea type="text" placeholder="Slide description" /></textarea>
+      
+      <div class="row">
+        <div id="allowed-html" class="columns twelve">
+          Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>
+        </div>
+      </div>
+      
       <button class="medium success button radius">Save slide</button>  
       <button class="medium secondary button radius">Cancel</button>    
     </form>
