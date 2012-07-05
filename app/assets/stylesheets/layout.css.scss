@@ -144,6 +144,12 @@ header {
   border: 1px solid #eee;
   border-bottom: 0;
   padding: 20px;
+
+  &:hover #slideshow-actions {
+    visibility: visible;
+    top: 12px;
+    left: 15px;
+  }
 }
 
 #slideshow-title {
@@ -216,6 +222,11 @@ header {
     list-style: none;
     float: left;
   }
+
+  .has-tip {
+    border-bottom: 0;
+    cursor: pointer;
+  }
 }
 
 .col-left {
@@ -247,7 +258,7 @@ header {
     font-weight: bold;
   }
   
-  &:hover .actions {
+  &:hover #slide-actions {
     visibility: visible;
   }
 }
