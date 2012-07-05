@@ -160,7 +160,7 @@ header {
    Slide Content
 ----------------------------------------- */
 
-#slide-actions {
+.actions {
   position: absolute;
   left: 0;
   padding: 1em;
@@ -235,7 +235,6 @@ header {
 
 #slideshow {
   position: relative;
-  padding: 20px;
   background: #f5f5f5;
   border: 1px solid #e7e7e7;
   text-shadow: 0 1px 0 #fff;
@@ -248,7 +247,7 @@ header {
     font-weight: bold;
   }
   
-  &:hover #slide-actions {
+  &:hover .actions {
     visibility: visible;
   }
 }
@@ -290,6 +289,7 @@ header {
 ----------------------------------------- */
 
 #map {
+  background: #ffff66;
   position: relative;
   clear: both;
   margin: 0 -20px;

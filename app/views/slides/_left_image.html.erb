@@ -4,11 +4,22 @@
   img_url = 'http://placehold.it/400x400&text=Not%20Set'
   img_url = slide.image.url(:medium) if slide.image.exists?
 %>
-<div class="col-left">
-  <div class="crop"><%= image_tag(img_url) %></div>
-</div>
-<div class="col-right">
-  <h5><%= slide.title %></h5>
-  <div id="slide-datetime">June 30, 2012 at 3:34 p.m. Central</div>
-  <div id="slide-desc"><%= slide.desc %></div>
+    
+<div style="padding: 20px;">
+  <div class="actions">
+    <ul>
+      <li><a href="#" id="edit"><%= image_tag "icons/glyphicons_030_pencil.png" %></a></li>
+      <li><a href="#" id="delete"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
+      <li><a href="#" id="new"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
+    </ul>
+  </div>
+
+  <div class="col-left">
+    <div class="crop"><%= image_tag(img_url) %></div>
+  </div>
+  <div class="col-right">
+    <h5><%= slide.title %></h5>
+    <div id="slide-datetime">June 30, 2012 at 3:34 p.m. Central</div>
+    <div id="slide-desc"><%= slide.desc %></div>
+  </div>
 </div>
