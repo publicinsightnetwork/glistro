@@ -18,6 +18,7 @@
 
 body {
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  line-height: 1.4;
 }
 
 h6 { font-weight: bold; }
@@ -29,34 +30,34 @@ ul {
 li {
   list-style: disc;
   padding: 0;
-  margin: .3em;
+  margin: .2em;
 
   &#icon-embed {
-    background: url(/assets/icons/edit-code.png) no-repeat 0 1px;
+    background: url(/assets/icons/edit-code.png) no-repeat 0 3px;
   }
 
   &#icon-editslide {
-    background: url(/assets/icons/pencil-small.png) no-repeat;
+    background: url(/assets/icons/pencil-small.png) no-repeat 0 3px;
   }
 
   &#icon-slideshows {
-    background: url(/assets/icons/slides.png) no-repeat;
+    background: url(/assets/icons/slides.png) no-repeat 0 3px;
   }
 
   &#icon-facebook {
-    background: url(/assets/icons/balloon-facebook-left.png) no-repeat;
+    background: url(/assets/icons/balloon-facebook-left.png) no-repeat 0 3px;
   }
 
   &#icon-twitter {
-    background: url(/assets/icons/balloon-twitter-left.png) no-repeat;
+    background: url(/assets/icons/balloon-twitter-left.png) no-repeat 0 3px;
   }
 
   &#icon-url {
-    background: url(/assets/icons/chain.png) no-repeat;
+    background: url(/assets/icons/chain.png) no-repeat 0 3px;
   }
 
   &#icon-date {
-    background: url(/assets/icons/calendar-medium.png) no-repeat;
+    background: url(/assets/icons/calendar-medium.png) no-repeat 0 3px;
   }
 }
 
@@ -188,7 +189,6 @@ header {
 
 #slide-desc {
   color: #777;
-  line-height: 1.4;
   padding-bottom: 30px;
 
   a, a:visited {
@@ -246,7 +246,7 @@ header {
 
   span {
     background: #444;
-    padding: 7px;
+    padding: 8px 7px 7px;
     color: #ccc;
     text-shadow: none;
     font-size: 13px;
@@ -354,7 +354,7 @@ header {
     li {
       list-style: none;
       padding-left: 20px;
-      margin-bottom: 7px;
+      margin: 0 0 5px;
 
       &:last-child {
         margin-bottom: 0;
@@ -371,6 +371,10 @@ header {
     max-width: 50px;
     max-height: 50px;
     margin: -.5em 1em 0 .7em;
+  }
+  
+  h6 {
+    margin: 0 0 2px;
   }
 }
 
