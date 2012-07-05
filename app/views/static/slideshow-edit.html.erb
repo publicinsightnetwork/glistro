@@ -4,7 +4,15 @@
   <!-- Grid Example -->
   <div class="row">
     <div id="slideshow" class="cf">
-     <div class="col-left">
+      <div id="slide-actions">
+        <ul>
+          <li><a href="#">Edit Slide</a></li>
+          <li><a href="#">Delete Slide</a></li>
+          <li><a href="#">New Slide</a></li>
+        </ul>
+      </div>
+    
+      <div class="col-left">
         <div class="crop"><%= image_tag "example/henry.jpg" %></div>
       </div>
 
@@ -15,8 +23,9 @@
         </div>
 
         <h5>Henry Pollard, 33</h5>
-        <div class="desc">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis <a href="#">dapibus posuere</a> velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-        </div>
+        <div id="slide-datetime">June 30, 2012 at 3:34 p.m. Central</div>
+        <div id="slide-desc">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis <a href="#">dapibus posuere</a> velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+        </div> 
       </div>
 
       <div id="map">
@@ -31,16 +40,32 @@
 </div>
 
 <div class="four columns" id="sidebar">
-  <div id="slides">     
-    <ol>       
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ol>
+  <div class="panel">
+    <form>
+      <input type="text" placeholder="Slide title" />
+      
+      <div class="row" style="margin-bottom: 1em;">
+        <div class="columns six">
+          <input type="text" placeholder="Date" />
+        </div>
+
+        <div class="columns six">
+          <input type="text" placeholder="Time" />
+        </div>        
+      </div>      
+      
+      <div class="row collapse" style="margin-bottom: 1em;">
+        <div class="eight mobile-three columns">
+          <input type="text" placeholder="Upload image" />
+        </div>
+        <div class="four mobile-one columns">
+          <a href="#" class="postfix button secondary">Browse</a>
+        </div>
+      </div>
+         
+      <textarea type="text" placeholder="Slide description" /></textarea>
+      <button class="medium success button radius">Save slide</button>  
+      <button class="medium secondary button radius">Cancel</button>    
+    </form>
   </div>
 </div>

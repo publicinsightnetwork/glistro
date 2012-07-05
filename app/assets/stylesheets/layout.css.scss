@@ -78,7 +78,7 @@ p {
 #tagline {
   float: left;
   color: #ccc;
-  margin: 1.7em 0 0 1em;
+  margin: 1.5em 0 0 1em;
 }
 
 div.panel {
@@ -98,6 +98,15 @@ div.panel .columns {
   margin-bottom: 4em;
 }
 
+
+
+/* -----------------------------------------
+   Button Style Overrides
+----------------------------------------- */
+
+.success {
+  text-shadow: 0 1px 0 #666;
+}
 
 
 /* -----------------------------------------
@@ -151,6 +160,27 @@ header {
    Slide Content
 ----------------------------------------- */
 
+#slide-actions {
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  
+  a, a:visited {
+    padding: .7em 1em;
+    background: #eee;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    float: left;
+  }
+}
+
 .col-left {
   float: left;
   width: 25%;
@@ -175,12 +205,17 @@ header {
   -moz-box-shadow: 0 0 5px #eee;
   -webkit-box-shadow: 0 0 5px #eee;
   box-shadow: 0 0 5px #eee;
+  
+  h5 {
+    margin: .3em 0 .5em 0;
+    font-weight: bold;
+  }
+  
+  &:hover #slide-actions {
+    visibility: visible;
+  }
 }
-
-#slideshow h5 {
-  margin: .3em 0 .5em 0;
-  font-weight: bold;
-}
+ 
 
 #slide-datetime {
   color: #999;
@@ -242,7 +277,7 @@ header {
 
 .arrows {
   float: right;
-  margin-top: .6em;
+  margin-top: .5em;
 
   span {
     background: #444;
@@ -317,6 +352,13 @@ header {
 
 #credit span { color: #ddd; }
 
+
+
+/* -----------------------------------------
+   Slide Edit
+----------------------------------------- */
+
+textarea { min-height: 250px; }
 
 
 /* -----------------------------------------
@@ -398,6 +440,7 @@ html, body { height: 100%; }
 #footer {
   line-height: 59px;
   background: #eee;
+  color: #999;
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #ddd;
 }
