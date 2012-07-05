@@ -7,3 +7,23 @@
   <br/><br/>
   <%= link_to 'New Slideshow', new_slideshow_path, :class => 'nice radius button blue' %>
 <% end %>
+
+
+<br/><br/>
+<h2><%= user_signed_in? ? 'Your Recent Slideshows' : 'Recent Slideshows' %></h2>
+<table>
+  <tr>
+    <th>Ident</th>
+    <th>Title</th>
+    <th>Created</th>
+    <th>Owner</th>
+  </tr>
+<% @slideshows.each do |ss| %>
+  <tr>
+    <td><%= link_to ss.ident, ss %></td>
+    <td><%= ss.title || '(none)' %></td>
+    <td><%= ss.blame_cre_at %></td>
+    <td><%= ss.blame_cre_user.email %></td>
+  </tr>
+<% end %>
+</table>
