@@ -1,6 +1,7 @@
 class Slideshow < ActiveRecord::Base
-  after_initialize :default_values
+  has_many :slides, :order => 'position'
   blameable
+  after_initialize :default_values
 
   # accessible attributes
   attr_accessible :ident, :title, :desc, :status, :map_type, :map_height, :slide_height

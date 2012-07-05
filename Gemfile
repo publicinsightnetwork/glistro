@@ -4,6 +4,7 @@ gem 'rails', '3.2.6'
 gem 'devise'
 gem 'paperclip', '~> 3.0'
 gem 'blamestamp'
+gem 'acts_as_list'
 
 gem 'sqlite3'
 gem 'jquery-rails'

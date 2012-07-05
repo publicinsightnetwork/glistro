@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  slideshow_id: 1
+  title: MyString
+  desc: MyText
+  position: 
+  layout: MyString
+  marker_lat: 1.5
+  marker_lng: 1.5
+
+two:
+  slideshow_id: 1
+  title: MyString
+  desc: MyText
+  position: 
+  layout: MyString
+  marker_lat: 1.5
+  marker_lng: 1.5
