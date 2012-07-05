@@ -72,7 +72,13 @@ class SlideshowsController < ApplicationController
 
     respond_to do |format|
       if @slideshow.save
-        @slideshow.slides.create # free first slide!
+
+        # some free slides ... TODO: remove
+        @slideshow.slides.create(:layout => Slide::TEXT_ONLY)
+        @slideshow.slides.create(:layout => Slide::LEFT_IMAGE)
+        @slideshow.slides.create(:layout => Slide::RIGHT_IMAGE)
+        @slideshow.slides.create(:layout => Slide::FULL_IMAGE)
+
         format.html { redirect_to @slideshow, notice: 'Slideshow was successfully created.' }
         format.json { render json: @slideshow, status: :created, location: @slideshow }
       else
