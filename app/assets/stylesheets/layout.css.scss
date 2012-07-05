@@ -69,23 +69,6 @@ hr {
   padding: 0;
 }
 
-header {
-  background: #444;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 2em;
-}
-
-header h3 {
-  color: #fff;
-  float: left;
-  margin: .4em 0;
-}
-
-header .login {
-  margin: 1em 0;
-}
-
 p {
   font-size: 14px;
   line-height: 1.5;
@@ -112,6 +95,33 @@ div.panel .columns {
 
 #main {
   margin-bottom: 4em;
+}
+
+
+
+/* -----------------------------------------
+   Header Content
+----------------------------------------- */
+
+header {
+  background: #444;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 2em;
+  
+  h3 {
+    color: #fff;
+    float: left;
+    margin: .5em 0;  
+  }
+  
+  a, a:visited {
+    color: #fff;
+  }
+
+  .login {
+    margin: 1em 0;
+  }
 }
 
 
