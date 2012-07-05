@@ -163,11 +163,48 @@ header {
 #slide-actions {
   position: absolute;
   left: 0;
+  padding: 1em;
   visibility: hidden;
+  background: rgba(0,0,0,.7);
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-bottomright: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  
+  img { width: 12px; }
   
   a, a:visited {
     padding: .7em 1em;
-    background: #eee;
+    background: #666;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    
+    &#edit {
+      &:hover {
+        background: #ccc;
+      }
+    }
+    
+    &#delete {
+    
+      &:hover {
+        background: #cc0000;
+      }
+    
+      img {
+        width: 10px;
+        margin-bottom: -1px;
+      }
+    }
+    
+    &#new {
+      &:hover {
+      background: #66cc00;
+      }
+    }
   }
   
   ul {

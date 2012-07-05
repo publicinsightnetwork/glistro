@@ -6,9 +6,9 @@
     <div id="slideshow" class="cf">
       <div id="slide-actions">
         <ul>
-          <li><a href="#">Edit Slide</a></li>
-          <li><a href="#">Delete Slide</a></li>
-          <li><a href="#">New Slide</a></li>
+          <li><a href="#" id="edit"><%= image_tag "icons/glyphicons_030_pencil.png" %></a></li>
+          <li><a href="#" id="delete"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
+          <li><a href="#" id="new"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
         </ul>
       </div>
     
@@ -40,7 +40,7 @@
 </div>
 
 <div class="four columns" id="sidebar">
-  <div class="panel">
+  <div class="panel" style="margin-top: 1em;">
     <form>
       <input type="text" placeholder="Slide title" />
       
