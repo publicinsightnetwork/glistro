@@ -2,6 +2,4 @@
 $ ->
   $("body.slideshows.action-show").each ->
 
-    $mapper = $('#slideshow').slideMapper
-      mapType: 'stamen-toner'
-      controlType: 'top'
+    $mapper = $('#slideshow').slideMapper(SLIDESHOWCFG)

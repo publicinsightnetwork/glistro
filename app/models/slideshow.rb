@@ -44,6 +44,26 @@ class Slideshow < ActiveRecord::Base
       :less_than => 1000,
     }
 
+  # transate to an object config
+  def to_config
+    {
+      :mapType           => self.map_type,
+      :apiKey            => nil,
+      :center            => [40.423, -98.7372],
+      :zoom              => 3,
+      :minZoom           => 2,
+      :maxZoom           => 10,
+      :keyEvents         => true,
+      :closePopupOnClick => false,
+      :mapPosition       => 'bottom',
+      :mapHeight         => self.map_height,
+      :slideHeight       => self.slide_height,
+      :autoHeight        => false,
+      :animateSpeed      => 200,
+      :controlType       => 'top',
+    }
+  end
+
   private
 
   def default_values
