@@ -64,6 +64,7 @@ GEM
     json (1.7.3)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    leaflet-rails (0.4.0.alpha6)
     letter_opener (0.0.2)
       launchy
     mail (2.4.4)
@@ -136,6 +137,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  leaflet-rails
   letter_opener
   paperclip (~> 3.0)
   rails (= 3.2.6)

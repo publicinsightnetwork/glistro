@@ -12,6 +12,7 @@ class SlideshowsController < ApplicationController
       @slideshow = Slideshow.where('status = ?', Slideshow::PUBLISHED)
         .find(params[:id])
     end
+    @slides = @slideshow.slides
   end
 
   # confirm that the current user owns the slideshow
@@ -71,6 +72,7 @@ class SlideshowsController < ApplicationController
 
     respond_to do |format|
       if @slideshow.save
+        @slideshow.slides.create # free first slide!
         format.html { redirect_to @slideshow, notice: 'Slideshow was successfully created.' }
         format.json { render json: @slideshow, status: :created, location: @slideshow }
       else

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require leaflet
 //= require foundation/app
 //= require foundation/jquery.customforms
 //= require foundation/jquery.orbit-1.4.0
@@ -19,4 +20,5 @@
 //= require foundation/jquery.reveal
 //= require foundation/jquery.tooltips
 //= require foundation/modernizr.foundation
+//= require slidemapper
 //= require_tree .
