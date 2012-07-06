@@ -27,39 +27,39 @@ h6 { font-weight: bold; }
 
 ul {
   margin: 0 0 0 1.6em;
-}
 
-li {
-  list-style: disc;
-  padding: 0;
-  margin: .2em;
+  li {
+    list-style: disc;
+    padding: 0;
+    margin: .2em;
 
-  &#icon-embed {
-    background: url(/assets/icons/edit-code.png) no-repeat 0 3px;
-  }
+    &#icon-embed {
+      background: url(/assets/icons/edit-code.png) no-repeat 0 3px;
+    }
 
-  &#icon-editslide {
-    background: url(/assets/icons/pencil-small.png) no-repeat 0 3px;
-  }
+    &#icon-editslide {
+      background: url(/assets/icons/pencil-small.png) no-repeat 0 3px;
+    }
 
-  &#icon-slideshows {
-    background: url(/assets/icons/slides.png) no-repeat 0 3px;
-  }
+    &#icon-slideshows {
+      background: url(/assets/icons/slides.png) no-repeat 0 3px;
+    }
 
-  &#icon-facebook {
-    background: url(/assets/icons/balloon-facebook-left.png) no-repeat 0 3px;
-  }
+    &#icon-facebook {
+      background: url(/assets/icons/balloon-facebook-left.png) no-repeat 0 3px;
+    }
 
-  &#icon-twitter {
-    background: url(/assets/icons/balloon-twitter-left.png) no-repeat 0 3px;
-  }
+    &#icon-twitter {
+      background: url(/assets/icons/balloon-twitter-left.png) no-repeat 0 3px;
+    }
 
-  &#icon-url {
-    background: url(/assets/icons/chain.png) no-repeat 0 3px;
-  }
+    &#icon-url {
+      background: url(/assets/icons/chain.png) no-repeat 0 3px;
+    }
 
-  &#icon-date {
-    background: url(/assets/icons/calendar-medium.png) no-repeat 0 3px;
+    &#icon-date {
+      background: url(/assets/icons/calendar-medium.png) no-repeat 0 3px;
+    }
   }
 }
 
@@ -101,7 +101,6 @@ div.panel .columns {
 }
 
 
-
 /* -----------------------------------------
    Button Style Overrides
 ----------------------------------------- */
@@ -135,7 +134,6 @@ header {
     margin: 1em 0;
   }
 }
-
 
 
 /* -----------------------------------------
@@ -179,8 +177,55 @@ header {
   h5 { margin-bottom: .3em; }
 }
 
+
 /* -----------------------------------------
-   Slideshow Content
+   Slideshows List Page
+----------------------------------------- */
+
+.slideshows {
+  h3#my-slideshows {
+    float: left;
+    margin: .2em .5em 0;
+    padding: 0;
+  }
+
+  #grid {
+    margin: 2em 0 3em;
+
+    h6 { margin: 0 0 3px; padding: 0; }
+
+    .pubdate {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 1.5em;
+    }
+  }
+
+  .crop {
+    max-height: 120px;
+    margin-bottom: 5px;
+
+    .actions {
+      margin: 10px 20px;
+      width: auto;
+      padding: .3em;
+      left: -5px;
+
+      a, a:visited {
+        padding: .3em 1em;
+        font-size: 13px;
+      }
+    }
+
+    &:hover .actions {
+      visibility: visible;
+    }
+  }
+}
+
+
+/* -----------------------------------------
+   Slideshow Title & Description
 ----------------------------------------- */
 
 #slideshow-info {
@@ -234,6 +279,7 @@ header {
   a, a:visited {
     padding: .7em 1.4em;
     background: #666 no-repeat 50% 50%;
+    color: #fff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -355,7 +401,6 @@ header {
 }
 
 
-
 /* -----------------------------------------
    Map
 ----------------------------------------- */
@@ -462,7 +507,6 @@ header {
 #credit span { color: #ddd; }
 
 
-
 /* -----------------------------------------
    Slide Edit
 ----------------------------------------- */
@@ -499,6 +543,7 @@ a.image {
   }
 }
 
+
 /* -----------------------------------------
    Sidebar
 ----------------------------------------- */
@@ -510,12 +555,20 @@ a.image {
 
     li {
     float: left;
-    width: 40%;
+    width: 47%;
     background: #f9f9f9;
     border: 1px solid #eee;
     padding: 10px;
     margin-bottom: 1em;
     list-style-position: inside;
+    cursor: move;
+    line-height: 1.2;
+    font-size: 13px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+
+      h6 { margin: 0; padding: 0; }
 
       &:nth-child(odd) {
         margin-right: 1em;
@@ -549,6 +602,8 @@ a.image {
   #slide-edit {
     display: none;
   }
+
+  #slide-nav {}
 }
 
 #user-profile {
@@ -590,6 +645,7 @@ html, body { height: 100%; }
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #ddd;
 }
+
 
 /* -----------------------------------------
    Clearfix
