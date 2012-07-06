@@ -166,6 +166,7 @@ header {
 ----------------------------------------- */
 
 .editing #slideshow-actions { visibility: hidden !important; }
+.editing .slide-actions { visibility: hidden !important; }
 
 
 /* -----------------------------------------
@@ -188,22 +189,27 @@ header {
   img { width: 12px; }
 
   a, a:visited {
-    padding: .7em 1em;
-    background: #666;
+    padding: .7em 1.4em;
+    background: #666 no-repeat 50% 50%;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+    background-size: 12px 14px;
+
+    &.edit { background-image: url(<%= asset_path "icons/glyphicons_030_pencil.png" %>); }
+    &.delete { background-image: url(<%= asset_path "icons/glyphicons_016_bin.png" %>); }
+    &.new { background-image: url(<%= asset_path "icons/glyphicons_190_circle_plus.png" %>); }
 
     &.edit {
       &:hover {
-        background: #ccc;
+        background-color: #ccc;
       }
     }
 
     &.delete {
 
       &:hover {
-        background: #cc0000;
+        background-color: #cc0000;
       }
 
       img {
@@ -214,7 +220,7 @@ header {
 
     &.new {
       &:hover {
-      background: #66cc00;
+      background-color: #66cc00;
       }
     }
   }
@@ -264,6 +270,9 @@ header {
     font-weight: bold;
   }
 
+  .slide-actions {
+    top: 20px;
+  }
   &:hover .slide-actions {
     visibility: visible;
   }
