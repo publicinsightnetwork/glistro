@@ -179,6 +179,54 @@ header {
   h5 { margin-bottom: .3em; }
 }
 
+
+
+/* -----------------------------------------
+   Slideshows List Page
+----------------------------------------- */
+
+.slideshows {
+  h3#my-slideshows { 
+    float: left;
+    margin: .2em .5em 0;
+    padding: 0;
+  }
+  
+  #grid {
+    margin: 2em 0 3em;
+    
+    h6 { margin: 0 0 3px; padding: 0; }
+    
+    .pubdate {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 1.5em;
+    }
+  }
+  
+  .crop {
+    max-height: 120px;
+    margin-bottom: 5px;
+    
+    .actions {
+      margin: 10px 20px;
+      width: auto;
+      padding: .3em;
+      left: -5px;
+      
+      a, a:visited {
+        padding: .3em 1em;
+        font-size: 13px;
+      }
+    }
+
+    &:hover .actions {
+      visibility: visible;
+    }
+  }
+}
+
+
 /* -----------------------------------------
    Slideshow Content
 ----------------------------------------- */
@@ -234,6 +282,7 @@ header {
   a, a:visited {
     padding: .7em 1.4em;
     background: #666 no-repeat 50% 50%;
+    color: #fff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;

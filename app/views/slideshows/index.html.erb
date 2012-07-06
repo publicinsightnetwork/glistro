@@ -1,4 +1,98 @@
-<h1>Listing slideshows</h1>
+<div class="cf">
+  <h3 id="my-slideshows">My Slideshows</h3>
+  <%= link_to 'New Slideshow', new_slideshow_path, :id => 'new-slideshow', :class => 'button success radius' %>
+</div>
+
+<div class="cf" id="grid">
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/vAZNC.jpg"></a>
+    </div>
+    <h6><a href="#">Colorado Wildfires</a></h6>
+    <div class="pubdate">June 27, 2012</div>
+  </div>
+
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/ZWXeJ.jpg"></a>
+    </div>
+    <h6><a href="#">Damage, destruction in wake of record Duluth flood</a></h6>
+    <div class="pubdate">June 26, 2012</div>
+  </div>
+  
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/y49nu.jpg"></a>
+    </div>
+    <h6><a href="#">Olympic Trials in Black and White</a></h6>
+    <div class="pubdate">June 15, 2012</div>
+  </div>
+
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/0MdHH.jpg"></a>
+    </div>
+    <h6><a href="#">Mud, electric shocks and more test athletes in Tough Mudder Minnesota</a></h6>
+    <div class="pubdate">June 12, 2012</div>
+  </div>  
+
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/vAZNC.jpg"></a>
+    </div>
+    <h6><a href="#">Colorado Wildfires</a></h6>
+    <div class="pubdate">June 27, 2012</div>
+  </div>
+
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/ZWXeJ.jpg"></a>
+    </div>
+    <h6><a href="#">Damage, destruction in wake of record Duluth flood</a></h6>
+    <div class="pubdate">June 26, 2012</div>
+  </div>
+  
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/y49nu.jpg"></a>
+    </div>
+    <h6><a href="#">Olympic Trials in Black and White</a></h6>
+    <div class="pubdate">June 15, 2012</div>
+  </div>
+
+  <div class="three columns">
+    <div class="crop">
+      <ul class="actions">
+        <li><a href="#" class="edit"></a></li>
+      </ul>
+      <a href="#"><img src="http://i.imgur.com/0MdHH.jpg"></a>
+    </div>
+    <h6><a href="#">Mud, electric shocks and more test athletes in Tough Mudder Minnesota</a></h6>
+    <div class="pubdate">June 12, 2012</div>
+  </div>
+</div>
+
 
 <table>
   <tr>
@@ -15,7 +109,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Slideshow', new_slideshow_path %>

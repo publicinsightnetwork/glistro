@@ -1,4 +1,4 @@
-<h1>New slideshow</h1>
+<h3>New slideshow</h3>
 
 <%= form_for(@slideshow) do |f| %>
 
@@ -21,27 +21,21 @@
   </div>
 
   <div class="row">
-    <div class="two mobile-one columns">
-      <label class="right">Title:</label>
-    </div>
     <div class="ten mobile-three columns">
-      <%= f.text_field :title, :class => "five", :placeholder => "header element" %>
+      <%= f.text_field :title, :class => "five", :placeholder => "Slideshow title" %>
       <%= form_errors(@slideshow, :title) %>
     </div>
   </div>
 
   <div class="row">
-    <div class="two mobile-one columns">
-      <label class="right">Description:</label>
-    </div>
     <div class="ten mobile-three columns">
-      <%= f.text_area :desc, :class => "five", :placeholder => "describe the contents of the slideshow" %>
+      <%= f.text_area :desc, :class => "five", :placeholder => "Slideshow description" %>
       <%= form_errors(@slideshow, :desc) %>
     </div>
   </div>
 
   <div class="row">
-    <div class="ten mobile-four columns offset-by-two">
+    <div class="ten mobile-four columns">
       <button type="submit" class="nice radius button blue">Create</button>
     </div>
   </div>
