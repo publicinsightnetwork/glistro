@@ -33,6 +33,12 @@ $ ->
 
     # init slidemapper
     $mapper = $('#slideshow').slideMapper(SLIDESHOWCFG)
+    $(this).tooltips('destroy')
+    $(this).tooltips('reload')
+
+    # disable map events on edit
+    if $(this).hasClass('action-edit')
+      $mapper.slideMapper('mapEvents', false);
 
     # start editing
     startEdit = ($el) ->
@@ -63,7 +69,7 @@ $ ->
       $('#slideshow-desc').html(this.value)
 
     # cancel slideshow edit
-    $('#slideshow-edit .button.secondary').click (e) ->
+    $('#slideshow-edit .cancel').click (e) ->
       e.preventDefault()
       endEdit($('#slideshow-edit'))
 
@@ -72,7 +78,7 @@ $ ->
       $('#slideshow-desc').html(SLIDESHOW.desc)
 
     # save slideshow edit
-    $('#slideshow-edit .button.success').click (e) ->
+    $('#slideshow-edit .save').click (e) ->
       e.preventDefault()
       endEdit($('#slideshow-edit'))
 
@@ -98,47 +104,69 @@ $ ->
           console.error("FAILURE", jqXHR, textStatus, errorThrown)
 
     # start slide edit
-    EDITSLIDE = {}
+    $SLIDEINNER = null
+    SLIDEINITIAL = null
+    SLIDEDATA = null
     $('#slideshow').on 'click', '.edit', (e) ->
       e.preventDefault()
       $se = $('#slide-edit').css('margin-top', $('#slideshow').position().top+'px')
       startEdit($se)
-      $act = $(this).closest('.slide-actions')
-      EDITSLIDE.id = $act.attr('data-id')
-      EDITSLIDE.el = $act.next('.slide-body')
+
+      # configure
+      $SLIDEINNER = $(this).closest('.slide-inner')
+      SLIDEINITIAL = $SLIDEINNER.html()
+      SLIDEDATA = null
+
+      # get data
+      slideId = $(this).attr('data-id')
       $.each SLIDESHOWCFG.slides, (idx, slide) ->
-        EDITSLIDE.data = slide.data if (slide.data.id+'') == EDITSLIDE.id
+        SLIDEDATA = slide.data if (slide.data.id+'') == slideId
+      SLIDEDATA.editing = true
 
       # set initial values
-      $('#slide-edit [name="title"]').val(EDITSLIDE.data.title)
-      $('#slide-edit [name="desc"]').val(EDITSLIDE.data.desc)
+      $('#slide-edit [name="layout"]').val(SLIDEDATA.layout)
+      $('#slide-edit [name="title"]').val(SLIDEDATA.title)
+      $('#slide-edit [name="desc"]').val(SLIDEDATA.desc)
+      $('#slide-edit [name="image_file_name"]').val(SLIDEDATA.image_file_name)
 
     # cancel slide edit
-    $('#slide-edit .button.secondary').click (e) ->
+    $('#slide-edit .cancel').click (e) ->
       e.preventDefault()
       endEdit($('#slide-edit'))
-
-      #revert changes
-      EDITSLIDE.el.find('.slide-title').html(EDITSLIDE.data.title)
-      EDITSLIDE.el.find('.slide-desc').html(EDITSLIDE.data.desc)
+      $SLIDEINNER.html(SLIDEINITIAL)
+      $(this).tooltips('destroy')
+      $(this).tooltips('reload')
 
     # slide changes
     # TODO: IE < 9 - http://stackoverflow.com/questions/7534890/can-jquery-check-whether-input-contents-has-changed
     $('#slide-edit [name="title"]').bind 'input', ->
-      EDITSLIDE.el.find('.slide-title').html(this.value)
+      $SLIDEINNER.find('.slide-title').html(this.value)
     $('#slide-edit [name="desc"]').bind 'input', ->
-      EDITSLIDE.el.find('.slide-desc').html(this.value)
+      $SLIDEINNER.find('.slide-desc').html(this.value)
 
     # save slide edit
-    $('#slide-edit .button.success').click (e) ->
+    $('#slide-edit .save').click (e) ->
       e.preventDefault()
       endEdit($('#slide-edit'))
+      $(this).tooltips('destroy')
+      $(this).tooltips('reload')
 
       # check for changes
       hasChanges = false
-      if (EDITSLIDE.data.title != (val = $('#slide-edit [name="title"]').val()))
-        hasChanges = EDITSLIDE.data.title = val
-      if (EDITSLIDE.data.desc != (val = $('#slide-edit [name="desc"]').val()))
-        hasChanges = EDITSLIDE.data.desc = val
+      if (SLIDEDATA.layout != (val = $('#slide-edit [name="layout"]').val()))
+        hasChanges = SLIDEDATA.layout = val
+      if (SLIDEDATA.title != (val = $('#slide-edit [name="title"]').val()))
+        hasChanges = SLIDEDATA.title = val
+      if (SLIDEDATA.desc != (val = $('#slide-edit [name="desc"]').val()))
+        hasChanges = SLIDEDATA.desc = val
       return unless hasChanges
       alert("TODO: ajax save")
+
+    # layout change
+    $('#slide-edit [name="layout"]').change ->
+      tpl = $(this).find("[value=\"#{this.value}\"]").attr('data-tpl')
+      $SLIDEINNER.html(SMT["slides/#{tpl}"](SLIDEDATA))
+
+    # file upload change
+    $('#slide-edit input:file').change ->
+      $('#slide-edit .imagename').val(this.value)

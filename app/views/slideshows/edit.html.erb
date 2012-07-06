@@ -57,14 +57,20 @@
           Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>
         </div>
       </div>
-      <button class="medium success button radius">Save show</button>
-      <button class="medium secondary button radius">Cancel</button>
+      <button class="save medium success button radius">Save show</button>
+      <button class="cancel medium secondary button radius">Cancel</button>
     </form>
   </div>
 
   <!-- edit slide -->
   <div id="slide-edit" class="panel">
     <form>
+      <select name="layout">
+        <option value="T" data-tpl="textonly">Text-only</option>
+        <option value="L" data-tpl="imageleft">Left-aligned image</option>
+        <option value="R" data-tpl="imageright">Right-aligned image</option>
+        <option value="F" data-tpl="imagefull">Full width image</option>
+      </select>
       <input name="title" type="text" placeholder="Slide title" />
       <div class="row" style="margin-bottom: 1em;">
         <div class="columns six">
@@ -76,10 +82,10 @@
       </div>
       <div class="row collapse" style="margin-bottom: 1em;">
         <div class="eight mobile-three columns">
-          <input name="image" type="text" placeholder="Upload image" />
+          <input class="imagename" type="text" placeholder="Upload image" readonly />
         </div>
         <div class="four mobile-one columns">
-          <a href="#" class="postfix button secondary">Browse</a>
+          <a class="image postfix button secondary"><input name="image" type="file" />Browse</a>
         </div>
       </div>
       <textarea name="desc" type="text" placeholder="Slide description" /></textarea>
@@ -88,8 +94,8 @@
           Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>
         </div>
       </div>
-      <button class="medium success button radius">Save slide</button>
-      <button class="medium secondary button radius">Cancel</button>
+      <button class="save medium success button radius">Save slide</button>
+      <button class="cancel medium secondary button radius">Cancel</button>
     </form>
   </div>
 

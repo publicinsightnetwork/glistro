@@ -304,6 +304,18 @@
       }
     },
 
+    // set map events on or off
+    mapEvents: function(turnOn) {
+      var props = ['dragging', 'touchZoom', 'doubleClickZoom', 'scrollWheelZoom', 'boxZoom'];
+      var fn = turnOn ? 'enable' : 'disable';
+      for (var i=0; i<props.length; i++) {
+        var p = props[i];
+        if (DATA.map[p] && typeof(DATA.map[p][fn]) === 'function') {
+          DATA.map[p][fn]();
+        }
+      }
+    },
+
     // prevent slide from changing
     freeze: function(makeFrozen) {
       DATA.frozen = makeFrozen;

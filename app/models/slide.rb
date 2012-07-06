@@ -37,7 +37,7 @@ class Slide < ActiveRecord::Base
       :center => nil, #TODO
       :html   => render_slide_partial(partials[self.layout], editing),
       :popup  => 'hello world',
-      :data   => editing ? self.attributes : nil,
+      :data   => editing ? self.as_json : nil,
     }
   end
 
