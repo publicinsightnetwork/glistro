@@ -4,7 +4,7 @@
 <!-- gather javascript config -->
 <script type="text/javascript">
   SLIDESHOWCFG = <%= ActiveSupport::JSON.encode(@slideshow.to_config).html_safe %>;
-  SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config }).html_safe %>;
+  SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config(true) }).html_safe %>;
 
   // editing info
   SLIDESHOW = <%= @slideshow.to_json.html_safe %>;

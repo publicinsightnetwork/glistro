@@ -5,6 +5,7 @@ gem 'devise'
 gem 'paperclip', '~> 3.0'
 gem 'blamestamp'
 gem 'acts_as_list'
+gem 'smt_rails', git: 'git://github.com/railsware/smt_rails.git'
 
 gem 'sqlite3'
 gem 'jquery-rails'

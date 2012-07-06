@@ -264,18 +264,21 @@ header {
     font-weight: bold;
   }
 
-  &:hover #slide-actions {
+  &:hover .slide-actions {
     visibility: visible;
   }
 }
 
+.slide-body {
+  padding: 20px;
+}
 
-#slide-datetime {
+.slide-dtim {
   color: #999;
   margin-bottom: 3px;
 }
 
-#slide-desc {
+.slide-desc {
   color: #777;
   padding-bottom: 30px;
 

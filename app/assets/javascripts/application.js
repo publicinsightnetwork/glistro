@@ -22,3 +22,6 @@
 //= require foundation/modernizr.foundation
 //= require slidemapper
 //= require_tree .
+//= require mustache
+//= require_tree ../../templates
+

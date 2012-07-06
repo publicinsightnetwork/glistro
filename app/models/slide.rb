@@ -9,6 +9,7 @@ class Slide < ActiveRecord::Base
 
   # accessible attributes
   attr_accessible :title, :desc, :image, :position, :layout, :marker_lat, :marker_lng
+  attr_accessor :image_url
 
   # constants
   TEXT_ONLY   = 'T'
@@ -28,15 +29,26 @@ class Slide < ActiveRecord::Base
     :inclusion => { :in => [TEXT_ONLY, LEFT_IMAGE, RIGHT_IMAGE, FULL_IMAGE] }
 
   # transate to an object config
-  def to_config
-    partials = { TEXT_ONLY   => 'slides/text_only', LEFT_IMAGE  => 'slides/left_image',
-      RIGHT_IMAGE => 'slides/right_image', FULL_IMAGE  => 'slides/full_image' }
+  def to_config(editing=false)
+    partials = { TEXT_ONLY   => 'slides/textonly', LEFT_IMAGE  => 'slides/imageleft',
+      RIGHT_IMAGE => 'slides/imageright', FULL_IMAGE  => 'slides/imagefull' }
     {
       :marker => self.marker_lat ? [self.marker_lat, self.marker_lng] : nil,
       :center => nil, #TODO
-      :html   => render_slide_partial(partials[self.layout]),
+      :html   => render_slide_partial(partials[self.layout], editing),
       :popup  => 'hello world',
+      :data   => editing ? self.attributes : nil,
     }
+  end
+
+  # virtual attribute
+  def image_url
+    self.image.exists? ? self.image.url(:medium) : 'http://placehold.it/400x400&text=Not%20Set'
+  end
+
+  # override as_json to include the image url
+  def as_json(options={})
+    super.as_json(options).merge(:image_url => self.image_url)
   end
 
   private
@@ -51,10 +63,10 @@ class Slide < ActiveRecord::Base
     self.marker_lng ||= -(rand * (115-80) + 80)
   end
 
-  def render_slide_partial(partial)
+  def render_slide_partial(partial, editing)
     view = ActionView::Base.new(ActionController::Base.view_paths)
     view.extend ApplicationHelper
-    view.render(:partial => partial, :locals => { :slide => self })
+    view.render(:partial => partial, :locals => { :mustache => self.as_json.merge(:editing => editing) })
   end
 
 end

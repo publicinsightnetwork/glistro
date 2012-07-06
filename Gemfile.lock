@@ -4,6 +4,16 @@ GIT
   specs:
     leaflet-rails (0.4.0.alpha6)
 
+GIT
+  remote: git://github.com/railsware/smt_rails.git
+  revision: c0fab00cbfd379785d2bd216ba7a9ecb3b2a9678
+  specs:
+    smt_rails (0.2.1)
+      mustache (>= 0.99.4)
+      rails (>= 3.1.0)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,6 +88,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.3.6)
+    mustache (0.99.4)
     orm_adapter (0.3.0)
     paperclip (3.1.2)
       activemodel (>= 3.0.0)
@@ -147,5 +158,6 @@ DEPENDENCIES
   paperclip (~> 3.0)
   rails (= 3.2.6)
   sass-rails (~> 3.2.3)
+  smt_rails!
   sqlite3
   uglifier (>= 1.0.3)
