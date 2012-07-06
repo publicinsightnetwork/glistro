@@ -1,6 +1,60 @@
-<h1>Editing slideshow</h1>
+<!-- just in case we need stamen tiles -->
+<script src="http://maps.stamen.com/js/tile.stamen.js"></script>
 
-<h3>TODO: everything</h3>
+<!-- gather javascript config -->
+<script type="text/javascript">
+  SLIDESHOWCFG = <%= ActiveSupport::JSON.encode(@slideshow.to_config).html_safe %>;
+  SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config }).html_safe %>;
+</script>
 
-<%= link_to 'Show', @slideshow %> |
-<%= link_to 'Back', slideshows_path %>
+<!-- show slideshow -->
+<div class="eight columns">
+
+  <!-- optional title/desc -->
+  <div id="slideshow-info">
+    <div class="actions" id="slideshow-actions">
+      <ul>
+        <li><a href="#" class="edit has-tip" title="Edit slideshow title and description"><%= image_tag "icons/glyphicons_030_pencil.png" %></a></li>
+        <li><a href="#" class="delete has-tip" title="Delete this slideshow"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
+        <li><a href="#" class="new has-tip" title="Add a new slide"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
+      </ul>
+    </div>
+
+    <% if @slideshow.title %><h3 id="slideshow-title"><%= @slideshow.title %></h3><% end %>
+    <% if @slideshow.desc %><div id="slideshow-desc"><%= @slideshow.desc %></div><% end %>
+  </div>
+
+  <!-- the main event -->
+  <div id="slideshow" class="cf"></div>
+
+</div>
+
+<!-- author/sharing info -->
+<div class="four columns" id="sidebar">
+
+  <!-- navigation -->
+  <div id="slidenav">
+    <ol>
+      <% @slides.each_with_index do |slide, idx| %>
+        <li>Slide <%= idx + 1 %></li>
+      <% end %>
+      <li>Create New Slide</li>
+    </ol>
+  </div>
+
+  <!-- edit slideshow -->
+  <div id="slideshow-edit" class="panel">
+    <form>
+      <input type="text" placeholder="Slideshow title" />
+      <textarea type="text" placeholder="Slideshow description" /></textarea>
+      <div class="row">
+        <div id="allowed-html" class="columns twelve">
+          Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>
+        </div>
+      </div>
+      <button class="medium success button radius">Save show</button>
+      <button class="medium secondary button radius">Cancel</button>
+    </form>
+  </div>
+
+</div>
