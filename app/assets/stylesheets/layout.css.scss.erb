@@ -27,39 +27,39 @@ h6 { font-weight: bold; }
 
 ul {
   margin: 0 0 0 1.6em;
-}
 
-li {
-  list-style: disc;
-  padding: 0;
-  margin: .2em;
+  li {
+    list-style: disc;
+    padding: 0;
+    margin: .2em;
 
-  &#icon-embed {
-    background: url(/assets/icons/edit-code.png) no-repeat 0 3px;
-  }
+    &#icon-embed {
+      background: url(/assets/icons/edit-code.png) no-repeat 0 3px;
+    }
 
-  &#icon-editslide {
-    background: url(/assets/icons/pencil-small.png) no-repeat 0 3px;
-  }
+    &#icon-editslide {
+      background: url(/assets/icons/pencil-small.png) no-repeat 0 3px;
+    }
 
-  &#icon-slideshows {
-    background: url(/assets/icons/slides.png) no-repeat 0 3px;
-  }
+    &#icon-slideshows {
+      background: url(/assets/icons/slides.png) no-repeat 0 3px;
+    }
 
-  &#icon-facebook {
-    background: url(/assets/icons/balloon-facebook-left.png) no-repeat 0 3px;
-  }
+    &#icon-facebook {
+      background: url(/assets/icons/balloon-facebook-left.png) no-repeat 0 3px;
+    }
 
-  &#icon-twitter {
-    background: url(/assets/icons/balloon-twitter-left.png) no-repeat 0 3px;
-  }
+    &#icon-twitter {
+      background: url(/assets/icons/balloon-twitter-left.png) no-repeat 0 3px;
+    }
 
-  &#icon-url {
-    background: url(/assets/icons/chain.png) no-repeat 0 3px;
-  }
+    &#icon-url {
+      background: url(/assets/icons/chain.png) no-repeat 0 3px;
+    }
 
-  &#icon-date {
-    background: url(/assets/icons/calendar-medium.png) no-repeat 0 3px;
+    &#icon-date {
+      background: url(/assets/icons/calendar-medium.png) no-repeat 0 3px;
+    }
   }
 }
 
@@ -101,7 +101,6 @@ div.panel .columns {
 }
 
 
-
 /* -----------------------------------------
    Button Style Overrides
 ----------------------------------------- */
@@ -135,7 +134,6 @@ header {
     margin: 1em 0;
   }
 }
-
 
 
 /* -----------------------------------------
@@ -178,7 +176,6 @@ header {
 
   h5 { margin-bottom: .3em; }
 }
-
 
 
 /* -----------------------------------------
@@ -228,7 +225,7 @@ header {
 
 
 /* -----------------------------------------
-   Slideshow Content
+   Slideshow Title & Description
 ----------------------------------------- */
 
 #slideshow-info {
@@ -404,7 +401,6 @@ header {
 }
 
 
-
 /* -----------------------------------------
    Map
 ----------------------------------------- */
@@ -511,7 +507,6 @@ header {
 #credit span { color: #ddd; }
 
 
-
 /* -----------------------------------------
    Slide Edit
 ----------------------------------------- */
@@ -525,6 +520,7 @@ textarea { min-height: 220px; }
   color: #666;
 }
 
+
 /* -----------------------------------------
    Sidebar
 ----------------------------------------- */
@@ -536,12 +532,13 @@ textarea { min-height: 220px; }
 
     li {
     float: left;
-    width: 40%;
+    width: 47%;
     background: #f9f9f9;
     border: 1px solid #eee;
     padding: 10px;
     margin-bottom: 1em;
     list-style-position: inside;
+    cursor: move;
 
       &:nth-child(odd) {
         margin-right: 1em;
@@ -575,6 +572,8 @@ textarea { min-height: 220px; }
   #slide-edit {
     display: none;
   }
+  
+  #slide-nav {}
 }
 
 #user-profile {
@@ -616,6 +615,7 @@ html, body { height: 100%; }
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #ddd;
 }
+
 
 /* -----------------------------------------
    Clearfix
