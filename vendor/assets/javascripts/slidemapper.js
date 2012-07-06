@@ -270,7 +270,6 @@
       else {
         DATA.options = $.extend({}, DATA.options, passedOpts);
         $THIS.empty();
-        $(document).unbind('keydown', _onKeyPress);
         $THIS.append(_makeHTML(DATA.options));
         showEl = $('.smapp-show', $THIS)[0];
         mapEl  = $('.smapp-map',  $THIS)[0];
@@ -279,7 +278,7 @@
         $(showEl)
           .on('click', '.ctrl-left', function() {$THIS.slideMapper('prev');})
           .on('click', '.ctrl-right', function() {$THIS.slideMapper('next');});
-        if (DATA.options.keyEvents) $(document).keydown(_onKeyPress);
+        methods.keyEvents(DATA.options.keyEvents);
 
         // initialize the map
         DATA.options.center = new L.LatLng(DATA.options.center[0], DATA.options.center[1]);
@@ -294,6 +293,14 @@
         DATA.items = [];
         DATA.index = null;
         methods.add(DATA.options.slides);
+      }
+    },
+
+    // set key events on or off
+    keyEvents: function(turnOn) {
+      $(document).unbind('keydown', _onKeyPress);
+      if (turnOn) {
+        $(document).keydown(_onKeyPress)
       }
     },
 

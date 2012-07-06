@@ -5,6 +5,10 @@
 <script type="text/javascript">
   SLIDESHOWCFG = <%= ActiveSupport::JSON.encode(@slideshow.to_config).html_safe %>;
   SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config }).html_safe %>;
+
+  // editing info
+  SLIDESHOW = <%= @slideshow.to_json.html_safe %>;
+  SLIDESHOWURL = '<%= slideshow_path(@slideshow) %>';
 </script>
 
 <!-- show slideshow -->
@@ -20,8 +24,8 @@
       </ul>
     </div>
 
-    <% if @slideshow.title %><h3 id="slideshow-title"><%= @slideshow.title %></h3><% end %>
-    <% if @slideshow.desc %><div id="slideshow-desc"><%= @slideshow.desc %></div><% end %>
+    <h3 id="slideshow-title"><%= @slideshow.title %></h3>
+    <div id="slideshow-desc"><%= @slideshow.desc.html_safe %></div>
   </div>
 
   <!-- the main event -->
