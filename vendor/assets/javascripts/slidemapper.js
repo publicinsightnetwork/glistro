@@ -304,6 +304,12 @@
       }
     },
 
+    // prevent slide from changing
+    freeze: function(makeFrozen) {
+      DATA.frozen = makeFrozen;
+      makeFrozen ? methods.keyEvents(false) : methods.keyEvents(true);
+    },
+
     // add a datapoint/marker to the map
     add: function(cfg) {
       if (cfg instanceof Array) {
@@ -358,6 +364,7 @@
 
     // move to a different marker
     move: function(index, panTo) {
+      if (DATA.frozen) return;
       if (index === null || index >= DATA.items.length || index < 0 || index == DATA.index) return;
 
       // slide out the old, in the new preview

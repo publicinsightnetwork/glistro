@@ -18,10 +18,10 @@
         <li><a href="#" id="delete" class="has-tip" title="Delete this slideshow"><%= image_tag "icons/glyphicons_016_bin.png" %></a></li>
         <li><a href="#" id="new" class="has-tip" title="Add a new slide"><%= image_tag "icons/glyphicons_190_circle_plus.png" %></a></li>
       </ul>
-    </div>  
-  
+    </div>
+
     <% if @slideshow.title %><h3 id="slideshow-title"><%= @slideshow.title %></h3><% end %>
-    <% if @slideshow.desc %><div id="slideshow-desc"><%= @slideshow.desc %></div><% end %>
+    <% if @slideshow.desc %><div id="slideshow-desc"><%= @slideshow.desc.html_safe %></div><% end %>
   </div>
 
   <!-- the main event -->

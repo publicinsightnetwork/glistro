@@ -61,4 +61,35 @@
     </form>
   </div>
 
+  <!-- edit slide -->
+  <div id="slide-edit" class="panel">
+    <form>
+      <input name="title" type="text" placeholder="Slide title" />
+      <div class="row" style="margin-bottom: 1em;">
+        <div class="columns six">
+          <input name="date" type="text" placeholder="Date" />
+        </div>
+        <div class="columns six">
+          <input name="time" type="text" placeholder="Time" />
+        </div>
+      </div>
+      <div class="row collapse" style="margin-bottom: 1em;">
+        <div class="eight mobile-three columns">
+          <input name="image" type="text" placeholder="Upload image" />
+        </div>
+        <div class="four mobile-one columns">
+          <a href="#" class="postfix button secondary">Browse</a>
+        </div>
+      </div>
+      <textarea name="desc" type="text" placeholder="Slide description" /></textarea>
+      <div class="row">
+        <div id="allowed-html" class="columns twelve">
+          Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>
+        </div>
+      </div>
+      <button class="medium success button radius">Save slide</button>
+      <button class="medium secondary button radius">Cancel</button>
+    </form>
+  </div>
+
 </div>
