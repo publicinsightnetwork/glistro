@@ -11,16 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705134848) do
+ActiveRecord::Schema.define(:version => 20120707145400) do
 
-  create_table "slides", :force => true do |t|
-    t.integer  "slideshow_id",       :null => false
-    t.string   "title"
-    t.text     "desc"
+  create_table "slideimages", :force => true do |t|
+    t.integer  "slide_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "blame_cre_at"
+    t.datetime "blame_upd_at"
+    t.integer  "blame_cre_by"
+    t.integer  "blame_upd_by"
+  end
+
+  create_table "slides", :force => true do |t|
+    t.integer  "slideshow_id", :null => false
+    t.string   "title"
+    t.text     "desc"
     t.integer  "position"
     t.string   "layout"
     t.float    "marker_lat"

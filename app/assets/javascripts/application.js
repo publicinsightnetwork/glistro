@@ -21,7 +21,11 @@
 //= require foundation/jquery.tooltips
 //= require foundation/modernizr.foundation
 //= require slidemapper
-//= require_tree .
 //= require mustache
 //= require_tree ../../templates
+//= require_self
+//= require utils
+//= require_tree .
 
+// global scopes MUST be declared in javascript, as coffeescript doesn't like them
+var UTILS = {}

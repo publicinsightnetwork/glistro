@@ -3,11 +3,10 @@
 <div class="actions slide-actions">
   <ul>
     <li><a href="#" class="edit has-tip" title="Edit slide image, title and description" data-id="{{id}}"></a></li>
-    <li><a href="#" class="delete has-tip" title="Delete this slide"></a></li>
-    <li><a href="#" class="new has-tip" title="Add a new slide"></a></li>
   </ul>
 </div>
 {{/editing}}
 <div class="slide-body image-full">
-  <div class="crop"><img class="slide-image" src="{{image_url}}"/></div>
+  {{#slideimage}}<div class="crop"><img class="slide-image" src="{{image_url}}"/></div>{{/slideimage}}
+  {{^slideimage}}<div class="crop"><img class="slide-image" src="http://placehold.it/800x350&text=Not%20Set"/></div>{{/slideimage}}
 </div>

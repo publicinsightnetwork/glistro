@@ -3,12 +3,13 @@
 
 <!-- gather javascript config -->
 <script type="text/javascript">
-  SLIDESHOWCFG = <%= ActiveSupport::JSON.encode(@slideshow.to_config).html_safe %>;
-  SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config(true) }).html_safe %>;
-
-  // editing info
-  SLIDESHOW = <%= @slideshow.to_json.html_safe %>;
-  SLIDESHOWURL = '<%= slideshow_path(@slideshow) %>';
+  SS = {
+    SHOW:      <%= @slideshow.to_json.html_safe %>,
+    SLIDES:    <%= @slides.to_json.html_safe %>,
+    SHOWURL:   '<%= slideshow_path(@slideshow) %>',
+    SLIDESURL: '<%= slideshow_slides_path(@slideshow) %>'
+  };
+  for (var i=0; i<SS.SLIDES.length; i++) { SS.SLIDES[i].editing = true; }
 </script>
 
 <!-- show slideshow -->
@@ -19,13 +20,10 @@
     <div class="actions" id="slideshow-actions">
       <ul>
         <li><a href="#" class="edit has-tip" title="Edit slideshow title and description"></a></li>
-        <li><a href="#" class="delete has-tip" title="Delete this slideshow"></a></li>
-        <li><a href="#" class="new has-tip" title="Add a new slide"></a></li>
       </ul>
     </div>
-
-    <h3 id="slideshow-title"><%= @slideshow.title %></h3>
-    <div id="slideshow-desc"><%= @slideshow.desc.html_safe %></div>
+    <h3 class="ss-title"><%= @slideshow.title %></h3>
+    <div class="ss-desc"><%= @slideshow.desc.html_safe %></div>
   </div>
 
   <!-- the main event -->
@@ -43,15 +41,15 @@
         <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
       <% end %>
     </ol>
-    
+
     <a href="#" class="button radius success">Add Slide</a>
   </div>
 
   <!-- edit slideshow -->
   <div id="slideshow-edit" class="panel">
     <form>
-      <input type="text" placeholder="Slideshow title" />
-      <textarea type="text" placeholder="Slideshow description" /></textarea>
+      <input type="text" placeholder="Slideshow title" name="title" />
+      <textarea type="text" placeholder="Slideshow description" name="desc" /></textarea>
       <div class="row">
         <div id="allowed-html" class="columns twelve">
           Allowed HTML: <code>&lt;a>&lt;b>&lt;i>&lt;blockquote></code>

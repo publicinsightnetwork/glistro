@@ -3,8 +3,10 @@
 
 <!-- gather javascript config -->
 <script type="text/javascript">
-  SLIDESHOWCFG = <%= ActiveSupport::JSON.encode(@slideshow.to_config).html_safe %>;
-  SLIDESHOWCFG.slides = <%= ActiveSupport::JSON.encode(@slides.collect { |s| s.to_config }).html_safe %>;
+  SS = {
+    SHOW:      <%= @slideshow.to_json.html_safe %>,
+    SLIDES:    <%= @slides.to_json.html_safe %>
+  };
 </script>
 
 <!-- show slideshow -->
@@ -12,8 +14,8 @@
 
   <!-- optional title/desc -->
   <div id="slideshow-info">
-    <% if @slideshow.title %><h3 id="slideshow-title"><%= @slideshow.title %></h3><% end %>
-    <% if @slideshow.desc %><div id="slideshow-desc"><%= @slideshow.desc.html_safe %></div><% end %>
+    <% if @slideshow.title %><h3 class="ss-title"><%= @slideshow.title %></h3><% end %>
+    <% if @slideshow.desc %><div class="ss-desc"><%= @slideshow.desc.html_safe %></div><% end %>
   </div>
 
   <!-- the main event -->

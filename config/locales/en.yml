@@ -1,5 +1,15 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      form: "%m/%d/%Y"
+      short: "%b %e, %G"
+      shortest: "%b %e"
+  time:
+    formats:
+      default: "%b %e %Y at %l:%M %P"
+      noyear: "%b %e at %l:%M %P"
+      short: "%b %e, %G"
+      mini: "%Y-%m-%d"
