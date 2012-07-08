@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require leaflet
 //= require foundation/app
 //= require foundation/jquery.customforms
@@ -20,6 +21,7 @@
 //= require foundation/jquery.reveal
 //= require foundation/jquery.tooltips
 //= require foundation/modernizr.foundation
+//= require jquery.fileupload
 //= require slidemapper
 //= require mustache
 //= require_tree ../../templates

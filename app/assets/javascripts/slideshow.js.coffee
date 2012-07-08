@@ -69,6 +69,7 @@ $ ->
       e.preventDefault()
       MYSLIDE = UTILS.slideEditData(this)
       UTILS.obj2form(MYSLIDE.data, '#slide-edit')
+      $('#slide-edit .imagename').val(MYSLIDE.data.slideimage.image_file_name) if MYSLIDE.data.slideimage
       UTILS.startEdit($('#slide-edit').css('margin-top', $('#slideshow').position().top+'px'))
 
     $('#slide-edit .cancel').click (e) ->
@@ -83,8 +84,16 @@ $ ->
       changes = UTILS.form2changes('#slide-edit', MYSLIDE.data)
       return UTILS.endEdit('#slide-edit') unless changes
 
+      # grab new image data, if it exists
+      MYSLIDE.data.slideimage = MYSLIDE.tmp.slideimage if changes.slideimage_id
+
       # save changes
-      console.log("TODO: save", changes)
+      $.ajax SS.SLIDESURL+'/'+MYSLIDE.data.id,
+        dataType: 'json'
+        type: 'put'
+        data: {slide: changes}
+        success: UTILS.remoteSuccess('#slide-edit', MYSLIDE.data, changes)
+        error: UTILS.remoteError('#slide-edit', MYSLIDE.data, changes)
 
     # bind fields
     UTILS.bind '#slide-edit [name="title"]', -> MYSLIDE.$el.find('.slide-title')
@@ -94,6 +103,34 @@ $ ->
       MYSLIDE.tmp.layout = this.value
       MYSLIDE.$el.html(UTILS.slideConfig(MYSLIDE.tmp).html)
 
-    # file upload change
-    $('#slide-edit input:file').change ->
-      $('#slide-edit .imagename').val(this.value)
+
+    # -----------------------------------------
+    #  image uploading
+    # -----------------------------------------
+
+    $("#slide-edit input:file").fileupload
+      url: '/upload.json'
+      dataType: 'json'
+      replaceFileInput: false
+      formData: {}
+      add: (e, data) ->
+        file = data.files[0]
+        $('#slide-edit .imagename').val(file.name || 'unknown')
+        $('#slide-edit .uploading').fadeIn 200
+        data.start = e.timeStamp
+        data.submit()
+        console.log("TODO: validation", e, data, file)
+      progress: (e, data) ->
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        progress = Math.max(progress, 1)
+        console.log("TODO: PROGRESS", data.loaded, data.total, progress+'%')
+      done: (e, data) ->
+        duration = 1000 - (e.timeStamp - data.start)
+        duration = Math.max(duration, 0)
+        $('#slide-edit .uploading').delay(duration).fadeOut 200, ->
+          UTILS.form2obj('#slide-edit', MYSLIDE.tmp) #get latest changes
+          MYSLIDE.tmp.slideimage = data.result
+          MYSLIDE.tmp.slideimage_id = data.result.id
+          $('#slide-edit [name="slideimage_id"]').val(data.result.id)
+          MYSLIDE.$el.html(UTILS.slideConfig(MYSLIDE.tmp).html)
+          console.log("DONE", data, data.result)

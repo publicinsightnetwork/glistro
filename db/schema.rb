@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20120707145400) do
 
   create_table "slideimages", :force => true do |t|
-    t.integer  "slide_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -26,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20120707145400) do
   end
 
   create_table "slides", :force => true do |t|
-    t.integer  "slideshow_id", :null => false
+    t.integer  "slideshow_id",  :null => false
     t.string   "title"
     t.text     "desc"
     t.integer  "position"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120707145400) do
     t.datetime "blame_upd_at"
     t.integer  "blame_cre_by"
     t.integer  "blame_upd_by"
+    t.integer  "slideimage_id"
   end
 
   create_table "slideshows", :force => true do |t|

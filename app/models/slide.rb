@@ -1,13 +1,14 @@
 class Slide < ActiveRecord::Base
   belongs_to :slideshow
-  has_one :slideimage
+  belongs_to :slideimage
 
   blameable :cascade => [:slideshow]
   acts_as_list :scope => :slideshow
   after_initialize :default_values
+  after_save :cleanup_images
 
   # accessible attributes
-  attr_accessible :title, :desc, :position, :layout, :marker_lat, :marker_lng
+  attr_accessible :title, :desc, :position, :layout, :marker_lat, :marker_lng, :slideimage_id
 
   # constants
   TEXT_ONLY   = 'T'
@@ -28,8 +29,9 @@ class Slide < ActiveRecord::Base
 
   # include image in json
   def as_json(options={})
-    options[:include] = [:slideimage]
-    super.as_json(options)
+    super.as_json(options).merge(
+      :slideimage => self.slideimage_id ? self.slideimage.as_json : nil
+    )
   end
 
   private
@@ -42,6 +44,12 @@ class Slide < ActiveRecord::Base
     # give it a random midwestern location
     self.marker_lat ||= (rand * (45-30) + 30)
     self.marker_lng ||= -(rand * (115-80) + 80)
+  end
+
+  def cleanup_images
+    user_id = self.blame_upd_by || self.blame_cre_by
+    cleanup = Slideimage.where('blame_cre_by = ? and id != ?', user_id, self.slideimage_id)
+    cleanup.each { |si| si.destroy }
   end
 
 end
