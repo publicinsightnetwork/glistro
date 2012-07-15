@@ -1,46 +1,4 @@
-<div id="banner" class="cf">
-  <div class="six columns">
-    <h3>Create and embed slideshows</h3>
-    Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-    
-    <div id="banner-signup">
-      <a href="#" class="button radius">Sign up &raquo;</a> <a href="#">View pricing</a>
-    </div>
-  </div>
-  <div id="screenshot" class="six columns"><%= image_tag "homepage/screenshot.png" %></div>
-</div>
-
-<div id="features" class="cf">
-  <div class="four columns">
-    <%= image_tag "homepage/inline-editing.jpg" %>
-    <h5>Inline Editing</h5>
-    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  </div>
-
-  <div class="four columns">
-    <%= image_tag "homepage/mapping.jpg" %>
-    <h5>Maps</h5>
-    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  </div>
-
-  <div class="four columns">
-    <%= image_tag "homepage/inline-editing.jpg" %>
-    <h5>Third Feature</h5>
-    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  </div>
-</div>
-
-<a href="static/slideshow">slideshow view</a>
-<a href="static/slideshow-edit">slideshow edit</a>
-
-<% if user_signed_in? %>
-  <br/><br/>
-  <%= link_to 'New Slideshow', new_slideshow_path, :class => 'nice radius button blue' %>
-<% end %>
-
-
-<br/><br/>
-<h2><%= user_signed_in? ? 'Your Recent Slideshows' : 'Recent Slideshows' %></h2>
+<h2>Your Recent Slideshows</h2>
 <table>
   <tr>
     <th>Ident</th>
@@ -57,3 +15,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= link_to 'New Slideshow', new_slideshow_path, :class => 'nice radius button blue' %>
