@@ -5,7 +5,7 @@ class Slide < ActiveRecord::Base
   blameable :cascade => [:slideshow]
   acts_as_list :scope => :slideshow
   after_initialize :default_values
-  after_save :cleanup_images
+  #after_save :cleanup_images
 
   # accessible attributes
   attr_accessible :title, :desc, :position, :layout, :marker_lat, :marker_lng, :slideimage_id
@@ -48,7 +48,8 @@ class Slide < ActiveRecord::Base
 
   def cleanup_images
     user_id = self.blame_upd_by || self.blame_cre_by
-    cleanup = Slideimage.where('blame_cre_by = ? and id != ?', user_id, self.slideimage_id)
+    cleanup = Slideimage.where('blame_cre_by = ? and id not in (?)',
+      user_id, Slide.select('slideimage_id').all)
     cleanup.each { |si| si.destroy }
   end
 
