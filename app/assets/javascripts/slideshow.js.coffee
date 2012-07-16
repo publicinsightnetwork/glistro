@@ -95,6 +95,16 @@ $ ->
         success: UTILS.remoteSuccess('#slide-edit', MYSLIDE.data, changes)
         error: UTILS.remoteError('#slide-edit', MYSLIDE.data, changes)
 
+      # refresh card
+      if MYSLIDE.data.slideimage
+        sim = MYSLIDE.data.slideimage
+        $('#slidenav ol li.active').html("<img alt=\"#{sim.image_file_name}\" src=\"#{sim.square_url}\"/>")
+      else
+        title = changes.title || MYSLIDE.data.title
+        desc = changes.desc || MYSLIDE.data.desc
+        desc = desc.substring(0, 70).replace(/\w+$/, '').replace(/(<([^>]+)>)/ig, '')
+        $('#slidenav ol li.active').html("<b>#{title}</b> #{desc}")
+
     # bind fields
     UTILS.bind '#slide-edit [name="title"]', -> MYSLIDE.$el.find('.slide-title')
     UTILS.bind '#slide-edit [name="desc"]', -> MYSLIDE.$el.find('.slide-desc')
@@ -134,3 +144,14 @@ $ ->
           $('#slide-edit [name="slideimage_id"]').val(data.result.id)
           MYSLIDE.$el.html(UTILS.slideConfig(MYSLIDE.tmp).html)
           console.log("DONE", data, data.result)
+
+
+    # -----------------------------------------
+    #  'show editing
+    # -----------------------------------------
+
+    $('#slidenav').on 'click', 'li', (e) ->
+      $('#slidenav ol li').removeClass('active')
+      $(this).addClass('active')
+      idx = $(this).attr('data-index')
+      SS.$map.slideMapper('move', parseInt(idx))

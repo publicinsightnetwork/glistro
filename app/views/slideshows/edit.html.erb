@@ -36,13 +36,22 @@
 
   <!-- navigation -->
   <div id="slidenav">
-    <ol>
+    <ol class="row">
       <% @slides.each_with_index do |slide, idx| %>
-        <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+        <li data-index="<%= idx %>" class="<%= 'active' if idx == 0 %>">
+          <% if slide.slideimage_id %>
+            <%= image_tag slide.slideimage.image.url(:square) %>
+          <% else %>
+            <%= slide.title ? ('<b>'+strip_tags(slide.title)+'</b>').html_safe : '' %>
+            <%= slide.desc  ? truncate(strip_tags(slide.desc), :length => 70, :separator => ' ') : '' %>
+          <% end %>
+        </li>
       <% end %>
     </ol>
 
-    <a href="#" class="button radius success">Add Slide</a>
+    <div>
+      <a href="#" class="add-slide button radius success">Add Slide</a>
+    </div>
   </div>
 
   <!-- edit slideshow -->
