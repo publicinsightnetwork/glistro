@@ -12,6 +12,10 @@
   for (var i=0; i<SS.SLIDES.length; i++) { SS.SLIDES[i].editing = true; }
 </script>
 
+<div id="editing-alert">
+  You are currently editing <strong>Colorado Wildfires</strong> | <a href="#">Done editing</a>
+</div>
+  
 <!-- show slideshow -->
 <div class="eight columns">
 
@@ -33,16 +37,20 @@
 
 <!-- author/sharing info -->
 <div class="four columns" id="sidebar">
-
+ 
   <!-- navigation -->
   <div id="slidenav">
     <ol class="row">
       <% @slides.each_with_index do |slide, idx| %>
         <li data-index="<%= idx %>" class="<%= 'active' if idx == 0 %>">
+        
+          <span class="slide-number">1</span>
+          <span class="slide-edit"><%= image_tag "icons/pencil-small-white.png" %></span>
+          <span class="slide-delete"><%= image_tag "icons/bin-small-white.png" %></span>
           <% if slide.slideimage_id %>
             <%= image_tag slide.slideimage.image.url(:square) %>
           <% else %>
-            <%= slide.title ? ('<b>'+strip_tags(slide.title)+'</b>').html_safe : '' %>
+            <%= slide.title ? ('<h5>'+strip_tags(slide.title)+'</h5>').html_safe : '' %>
             <%= slide.desc  ? truncate(strip_tags(slide.desc), :length => 70, :separator => ' ') : '' %>
           <% end %>
         </li>
