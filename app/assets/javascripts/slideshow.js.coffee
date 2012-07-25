@@ -157,6 +157,7 @@ $ ->
         $active.addClass('active')
 
     $('#slidenav').on 'click', 'li', (e) ->
+      return if $(this).hasClass('active')
       $('#slidenav ol li').removeClass('active')
       $(this).addClass('active')
       idx = $(this).attr('data-index')
