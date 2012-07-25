@@ -13,9 +13,9 @@
 </script>
 
 <div id="editing-alert">
-  You are currently editing <strong>Colorado Wildfires</strong> | <a href="#">Done editing</a>
+  You are currently editing <strong><%= @slideshow.title %></strong> | <%= link_to 'Done editing', slideshow_path(@slideshow) %>
 </div>
-  
+
 <!-- show slideshow -->
 <div class="eight columns">
 
@@ -37,14 +37,14 @@
 
 <!-- author/sharing info -->
 <div class="four columns" id="sidebar">
- 
+
   <!-- navigation -->
   <div id="slidenav">
     <ol class="row">
       <% @slides.each_with_index do |slide, idx| %>
         <li data-index="<%= idx %>" class="<%= 'active' if idx == 0 %>">
-        
-          <span class="slide-number">1</span>
+
+          <span class="slide-number"><%= idx + 1 %></span>
           <span class="slide-edit"><%= image_tag "icons/pencil-small-white.png" %></span>
           <span class="slide-delete"><%= image_tag "icons/bin-small-white.png" %></span>
           <% if slide.slideimage_id %>
