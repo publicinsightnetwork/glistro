@@ -47,6 +47,10 @@ $ ->
       changes = UTILS.form2changes('#slideshow-edit', SS.SHOW)
       return UTILS.endEdit('#slideshow-edit') unless changes
 
+      # update show title
+      if changes.title
+        $('#editing-alert strong').html(changes.title)
+
       # save changes
       $.ajax SS.SHOWURL,
         dataType: 'json'
