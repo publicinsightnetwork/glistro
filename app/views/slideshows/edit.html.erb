@@ -42,17 +42,19 @@
   <div id="slidenav">
     <ol class="row">
       <% @slides.each_with_index do |slide, idx| %>
-        <li data-index="<%= idx %>" class="<%= 'active' if idx == 0 %>">
+        <li class="<%= 'active' if idx == 0 %>">
 
           <span class="slide-number"><%= idx + 1 %></span>
-          <span class="slide-edit"><%= image_tag "icons/pencil-small-white.png" %></span>
+          <span class="slide-edit" data-id="<%= slide.id %>"><%= image_tag "icons/pencil-small-white.png" %></span>
           <span class="slide-delete"><%= image_tag "icons/bin-small-white.png" %></span>
-          <% if slide.slideimage_id %>
-            <%= image_tag slide.slideimage.image.url(:square) %>
-          <% else %>
-            <%= slide.title ? ('<h5>'+strip_tags(slide.title)+'</h5>').html_safe : '' %>
-            <%= slide.desc  ? truncate(strip_tags(slide.desc), :length => 70, :separator => ' ') : '' %>
-          <% end %>
+          <span class="slide-card">
+            <% if slide.slideimage_id %>
+              <%= image_tag slide.slideimage.image.url(:square) %>
+            <% else %>
+              <%= slide.title ? ('<h5>'+strip_tags(slide.title)+'</h5>').html_safe : '' %>
+              <%= slide.desc  ? truncate(strip_tags(slide.desc), :length => 70, :separator => ' ') : '' %>
+            <% end %>
+          </span>
         </li>
       <% end %>
     </ol>

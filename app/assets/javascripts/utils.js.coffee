@@ -181,3 +181,22 @@ UTILS.remoteError = ($form, obj, changes) ->
     UTILS.unmask($form)
     UTILS.obj2form(obj, $form) #revert changes
     alert("Sorry... a remote error has occurred")
+
+# -----------------------------------------
+#  Move slidenav to a new index (css hack to redraw)
+# -----------------------------------------
+UTILS.moveNav = (index) ->
+  $active = $('#slidenav ol li.active')
+  unless $active.index() == index
+    $active.removeClass('active')
+    $active.css('display', 'none')
+    $active.offset()
+    $active.css('display', 'block')
+    $('#slidenav ol li').eq(index).addClass('active')
+
+# -----------------------------------------
+#  Move slideshow to a new index
+# -----------------------------------------
+UTILS.moveSlide = (index) ->
+  unless SS.$map.slideMapper('get').index == index
+    SS.$map.slideMapper('move', index, true)

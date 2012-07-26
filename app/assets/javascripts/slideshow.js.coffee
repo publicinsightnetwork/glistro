@@ -98,12 +98,12 @@ $ ->
       # refresh card
       if MYSLIDE.data.slideimage
         sim = MYSLIDE.data.slideimage
-        $('#slidenav ol li.active').html("<img alt=\"#{sim.image_file_name}\" src=\"#{sim.square_url}\"/>")
+        $('#slidenav ol li.active .slide-card').html("<img alt=\"#{sim.image_file_name}\" src=\"#{sim.square_url}\"/>")
       else
         title = changes.title || MYSLIDE.data.title
         desc = changes.desc || MYSLIDE.data.desc
         desc = desc.substring(0, 70).replace(/\w+$/, '').replace(/(<([^>]+)>)/ig, '')
-        $('#slidenav ol li.active').html("<b>#{title}</b> #{desc}")
+        $('#slidenav ol li.active .slide-card').html("<h5>#{title}</h5> #{desc}")
 
     # bind fields
     UTILS.bind '#slide-edit [name="title"]', -> MYSLIDE.$el.find('.slide-title')
@@ -147,24 +147,24 @@ $ ->
 
 
     # -----------------------------------------
-    #  'show editing
+    #  Tie slidenav to slideshow
     # -----------------------------------------
 
     SS.$map.on 'move', (e, slide, idx) ->
-      $active = $("#slidenav ol li[data-index=#{idx}]")
-      unless $active.hasClass('active')
-        $old = $('#slidenav ol li.active').removeClass('active')
-        $old.css('display', 'none')
-        $old.offset()
-        $old.css('display', 'block')
-        $active.addClass('active')
+      UTILS.moveNav(idx)
 
     $('#slidenav').on 'click', 'li', (e) ->
-      return if $(this).hasClass('active')
-      $old = $('#slidenav ol li.active').removeClass('active')
-      $old.css('display', 'none')
-      $old.offset()
-      $old.css('display', 'block')
-      $(this).addClass('active')
-      idx = $(this).attr('data-index')
-      SS.$map.slideMapper('move', parseInt(idx), true)
+      idx = $(this).index()
+      UTILS.moveSlide(idx)
+      UTILS.moveNav(idx)
+
+    $('#slidenav').on 'click', 'li .slide-edit', (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+
+      idx = $(this).parent().index()
+      UTILS.moveSlide(idx)
+      UTILS.moveNav(idx)
+
+      id = $(this).attr('data-id')
+      $('#slideshow .edit[data-id="'+id+'"]').click()
