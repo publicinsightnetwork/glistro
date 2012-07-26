@@ -1,82 +1,73 @@
 class SlidesController < ApplicationController
-  # GET /slides
-  # GET /slides.json
-  def index
-    @slides = Slide.all
+  before_filter :lookup_slideshow
+  before_filter :lookup_slide, :except => [:index, :create]
+  before_filter :authenticate_user!
+  before_filter :confirm_owner!
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @slides }
+  # lookup owning slideshow
+  def lookup_slideshow
+    @slideshow = Slideshow.find(params[:slideshow_id])
+  end
+
+  # lookup specific slide
+  def lookup_slide
+    @slide = @slideshow.slides.find(params[:id])
+  end
+
+  # confirm that the current user owns the slideshow
+  def confirm_owner!
+    unless current_user.id == @slideshow.blame_cre_by
+      respond_to do |format|
+        format.json { head :no_content, :status => :forbidden }
+      end
     end
   end
 
-  # GET /slides/1
-  # GET /slides/1.json
-  def show
-    @slide = Slide.find(params[:id])
+  # GET /slideshows/:slideshow_id/slides.json
+  def index
+    respond_to do |format|
+      format.json { render json: @slideshow.slides }
+    end
+  end
 
+  # GET /slideshows/:slideshow_id/slides/1.json
+  def show
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @slide }
     end
   end
 
-  # GET /slides/new
-  # GET /slides/new.json
-  def new
-    @slide = Slide.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @slide }
-    end
-  end
-
-  # GET /slides/1/edit
-  def edit
-    @slide = Slide.find(params[:id])
-  end
-
-  # POST /slides
-  # POST /slides.json
+  # POST /slideshows/:slideshow_id/slides.json
   def create
     @slide = Slide.new(params[:slide])
+    @slide.slideshow_id = @slideshow.id
 
     respond_to do |format|
       if @slide.save
-        format.html { redirect_to @slide, notice: 'Slide was successfully created.' }
-        format.json { render json: @slide, status: :created, location: @slide }
+        format.json { render json: @slide, status: :created, location: slideshow_slide_path(@slideshow, @slide) }
       else
-        format.html { render action: "new" }
         format.json { render json: @slide.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /slides/1
-  # PUT /slides/1.json
+  # PUT /slideshows/:slideshow_id/slides/1.json
   def update
-    @slide = Slide.find(params[:id])
-
     respond_to do |format|
       if @slide.update_attributes(params[:slide])
-        format.html { redirect_to @slide, notice: 'Slide was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
         format.json { render json: @slide.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /slides/1
-  # DELETE /slides/1.json
+  # DELETE /slideshows/:slideshow_id/slides/1.json
   def destroy
-    @slide = Slide.find(params[:id])
     @slide.destroy
 
     respond_to do |format|
-      format.html { redirect_to slides_url }
       format.json { head :no_content }
     end
   end

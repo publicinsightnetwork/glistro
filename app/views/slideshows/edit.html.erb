@@ -42,10 +42,10 @@
   <div id="slidenav">
     <ol class="row">
       <% @slides.each_with_index do |slide, idx| %>
-        <li class="<%= 'active' if idx == 0 %>">
+        <li class="<%= 'active' if idx == 0 %>" data-id="<%= slide.id %>">
 
           <span class="slide-number"><%= idx + 1 %></span>
-          <span class="slide-edit" data-id="<%= slide.id %>"><%= image_tag "icons/pencil-small-white.png" %></span>
+          <span class="slide-edit"><%= image_tag "icons/pencil-small-white.png" %></span>
           <span class="slide-delete"><%= image_tag "icons/bin-small-white.png" %></span>
           <span class="slide-card">
             <% if slide.slideimage_id %>
@@ -60,7 +60,7 @@
     </ol>
 
     <div>
-      <a href="#" class="add-slide button radius success">Add Slide</a>
+      <a class="add-slide button radius success">Add Slide</a>
     </div>
   </div>
 

@@ -1,0 +1,10 @@
+<!-- Slideshow editing card-navigation -->
+<li class="" data-id="{{id}}">
+  <span class="slide-number">0</span>
+  <span class="slide-edit"><img alt="Pencil-small-white" src="/assets/icons/pencil-small-white.png"></span>
+  <span class="slide-delete"><img alt="Bin-small-white" src="/assets/icons/bin-small-white.png"></span>
+  <span class="slide-card">
+    {{#slideimage}}<img alt="{{image_file_name}}" src="{{square_url}}"/>{{/slideimage}}
+    {{^slideimage}}<h5>{{title}}</h5> {{short_desc}}{{/slideimage}}
+  </span>
+</li>

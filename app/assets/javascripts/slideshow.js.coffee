@@ -100,14 +100,10 @@ $ ->
         error: UTILS.remoteError('#slide-edit', MYSLIDE.data, changes)
 
       # refresh card
-      if MYSLIDE.data.slideimage
-        sim = MYSLIDE.data.slideimage
-        $('#slidenav ol li.active .slide-card').html("<img alt=\"#{sim.image_file_name}\" src=\"#{sim.square_url}\"/>")
-      else
-        title = changes.title || MYSLIDE.data.title
-        desc = changes.desc || MYSLIDE.data.desc
-        desc = desc.substring(0, 70).replace(/\w+$/, '').replace(/(<([^>]+)>)/ig, '')
-        $('#slidenav ol li.active .slide-card').html("<h5>#{title}</h5> #{desc}")
+      allData = $.extend({}, MYSLIDE.data, changes)
+      $newCard = $(UTILS.slideNavCard(allData)).addClass('active')
+      $newCard.replaceAll('#slidenav ol li.active')
+      UTILS.fixNumbers()
 
     # bind fields
     UTILS.bind '#slide-edit [name="title"]', -> MYSLIDE.$el.find('.slide-title')
@@ -154,14 +150,17 @@ $ ->
     #  Tie slidenav to slideshow
     # -----------------------------------------
 
+    # slide changed
     SS.$map.on 'move', (e, slide, idx) ->
       UTILS.moveNav(idx)
 
+    # nav changed
     $('#slidenav').on 'click', 'li', (e) ->
       idx = $(this).index()
       UTILS.moveSlide(idx)
       UTILS.moveNav(idx)
 
+    # jump to slide-edit
     $('#slidenav').on 'click', 'li .slide-edit', (e) ->
       e.preventDefault()
       e.stopPropagation()
@@ -170,5 +169,53 @@ $ ->
       UTILS.moveSlide(idx)
       UTILS.moveNav(idx)
 
-      id = $(this).attr('data-id')
+      id = $(this).parent().attr('data-id')
       $('#slideshow .edit[data-id="'+id+'"]').click()
+
+    # delete slide
+    $('#slidenav').on 'click', 'li .slide-delete', (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      idx = $(this).parent().index()
+      wasActive = $(this).parent().hasClass('active')
+
+      $(this).parent().fadeOut 150, ->
+        $(this).remove()
+        SS.$map.slideMapper('remove', idx)
+        UTILS.fixNumbers()
+        if wasActive
+          newIdx = SS.$map.slideMapper('get').index
+          $('#slidenav ol li').eq(newIdx).addClass('active')
+
+      id = $(this).parent().attr('data-id')
+      $.ajax "#{SS.SLIDESURL}/#{id}",
+        dataType: 'json'
+        type: 'delete'
+        error: (jqXHR, textStatus, errorThrown) ->
+          console.error("remote error", jqXHR, textStatus, errorThrown)
+          alert("Sorry... a remote error has occurred")
+
+    # add a new slide
+    $('#slidenav .add-slide').click (e) ->
+      e.preventDefault()
+      $btn = $(this).addClass('disabled')
+
+      $.ajax SS.SLIDESURL,
+        dataType: 'json'
+        type: 'post'
+        data: {} #TODO
+        error: (jqXHR, textStatus, errorThrown) ->
+          $btn.removeClass('disabled')
+          console.error("remote error", jqXHR, textStatus, errorThrown)
+          alert("Sorry... a remote error has occurred")
+        success: (data, textStatus, jqXHR) ->
+          $btn.removeClass('disabled')
+          SS.SLIDES.push(data)
+
+          # add to map and slidenav
+          data.editing = true
+          SS.$map.slideMapper('add', UTILS.slideConfig(data))
+          $newCard = $(UTILS.slideNavCard(data))
+          $newCard.appendTo('#slidenav ol')
+          $newCard.find('.slide-edit').click()
+          UTILS.fixNumbers()

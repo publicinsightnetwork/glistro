@@ -87,6 +87,14 @@ UTILS.slideConfig = (obj) ->
   popup: 'hello world'
 
 # -----------------------------------------
+#  Get the html markup for a slidenav card
+# -----------------------------------------
+UTILS.slideNavCard = (data) ->
+  longDesc = data.desc || ''
+  data.short_desc = longDesc.substring(0, 70).replace(/\w+$/, '').replace(/(<([^>]+)>)/ig, '')
+  return SMT['slidenav/card'](data)
+
+# -----------------------------------------
 #  Get slide editing data for a certain ID
 # -----------------------------------------
 UTILS.slideEditData = ($btn) ->
@@ -200,3 +208,10 @@ UTILS.moveNav = (index) ->
 UTILS.moveSlide = (index) ->
   unless SS.$map.slideMapper('get').index == index
     SS.$map.slideMapper('move', index, true)
+
+# -----------------------------------------
+#  Fix slidenav numbering
+# -----------------------------------------
+UTILS.fixNumbers = ->
+  $('#slidenav ol li .slide-number').each (idx, el) ->
+    $(this).html(idx + 1)
