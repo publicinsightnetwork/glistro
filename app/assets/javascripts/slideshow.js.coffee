@@ -153,12 +153,18 @@ $ ->
     SS.$map.on 'move', (e, slide, idx) ->
       $active = $("#slidenav ol li[data-index=#{idx}]")
       unless $active.hasClass('active')
-        $('#slidenav ol li').removeClass('active')
+        $old = $('#slidenav ol li.active').removeClass('active')
+        $old.css('display', 'none')
+        $old.offset()
+        $old.css('display', 'block')
         $active.addClass('active')
 
     $('#slidenav').on 'click', 'li', (e) ->
       return if $(this).hasClass('active')
-      $('#slidenav ol li').removeClass('active')
+      $old = $('#slidenav ol li.active').removeClass('active')
+      $old.css('display', 'none')
+      $old.offset()
+      $old.css('display', 'block')
       $(this).addClass('active')
       idx = $(this).attr('data-index')
       SS.$map.slideMapper('move', parseInt(idx), true)
