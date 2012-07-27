@@ -17,8 +17,12 @@
 ----------------------------------------- */
 
 body {
+  background: #f6f6f6 url(<%= asset_path "noise-gray.jpg" %>) repeat;
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
   line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
 }
 
 .button { text-shadow: none !important; }
@@ -77,8 +81,10 @@ p {
   line-height: 1.5;
 }
 
+
+
 div.panel {
-  background: #f9f9f9;
+  background: #fff;
   border: 1px solid #eee;
   padding: 10px;
   -webkit-border-radius: 2px;
@@ -111,6 +117,10 @@ div.panel .columns {
    Button Style Overrides
 ----------------------------------------- */
 
+.button {
+  border: 1px solid #2BA6CB;
+}
+
 .success {
   text-shadow: 0 1px 0 #666;
 }
@@ -121,7 +131,7 @@ div.panel .columns {
 ----------------------------------------- */
 
 header {
-  background: #444;
+  background: #709677 url(<%= asset_path "noise-green.jpg" %>) repeat;
   color: #aaa;
   font-weight: bold;
   padding: 1em;
@@ -175,16 +185,17 @@ header {
 ----------------------------------------- */
 
 #banner {
-  background: #f6f6f6;
+  background: #fff;
   color: #666;
   padding: 20px;
   margin-bottom: 3.4em;
   text-shadow: 0 1px 0 #fff;
-  border: 1px solid #eee;
+  border: 1px solid #e8e8e8;
+  -webkit-box-shadow: 0px 0 6px rgba(100, 100, 100, 0.1);
+  -moz-box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+  box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);   
   overflow: hidden;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  position: relative;
 
   h3 {
     color: #444;
@@ -192,11 +203,9 @@ header {
   }
 
   #screenshot {
-    position: relative;
-
-    img {
-      position: absolute;
-    }
+    position: absolute;
+    bottom: -10px;
+    right: 0;
   }
 
   #banner-signup {
@@ -210,14 +219,161 @@ header {
 
 #features {
   margin-bottom: 2em;
-
-  img {
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+  color: #666;
+  
+  .four {
+    width: 30%;
+    margin-right: 5.1%;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    -webkit-box-shadow: 0px 0 6px rgba(100, 100, 100, 0.1);
+    -moz-box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+    box-shadow: 0px 0 6px rgba(100, 100, 100,0.1); 
+    
+    &.columns { padding: 0 15px 15px; }
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .feature-img {
+    margin: 0 -15px;
   }
 
-  h5 { margin-bottom: .3em; }
+  img {
+    max-width: 100%;
+  }
+
+  h5 { margin-bottom: .3em; color: #444; }
+}
+
+
+/* -----------------------------------------
+   Signup Page
+----------------------------------------- */
+
+#signup {
+  margin: 0 auto;
+  padding: 1em 2em;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  -webkit-box-shadow: 0px 0 6px rgba(100, 100, 100, 0.1);
+  -moz-box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+  box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+  
+  
+  h4 { 
+    text-align: center; 
+    padding: 0 0 .3em;
+    margin: 0 -1em;
+  }
+  
+  #signup-tag {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+  }
+  
+  label { font-weight: bold; }
+  
+  input { margin-bottom: 1.3em; }
+  
+  #signup-fields {
+    border-right: 1px solid #eee;
+    padding: 2em;
+  }
+  
+  ul {
+    margin: 0;
+  }
+  
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  #social-signup {
+    padding: 2em;
+    
+    button {
+      width: 100%;
+      text-align: left;
+    }
+    
+    #facebook {
+      margin: 1em 0;
+      background: #3a589c url(<%= asset_path "button-facebook.jpg" %>) repeat-x bottom;
+      border: 1px solid #3a589c;
+      padding-left: 42px;
+
+      &:before {
+        content: url(<%= asset_path "logo-facebook.png" %>);
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        padding: 3px 7px 3px 0;
+        border-right: 1px solid #698bda;
+      }
+      
+      &:hover {
+        background: #3a589c;
+      }
+    }
+    
+    #twitter {
+      background: #00aced url(<%= asset_path "button-twitter.jpg" %>) repeat-x bottom;
+      border: 1px solid #0da1d8;
+      position: relative;
+      padding-left: 42px;
+      
+      &:before {
+        content: url(<%= asset_path "logo-twitter.png" %>);
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        padding: 7px 7px 7px 0;
+        border-right: 1px solid #45bbe7;
+      }
+
+      &:hover {
+        background: #00aced;
+      }
+    }
+  }
+    
+  #got-account {
+    background: #709677 url(<%= asset_path "noise-green.jpg" %>) repeat;
+    color: #fff;
+    text-shadow: 0 1px 0 #444;
+    padding: 1em 1em;
+    margin: 0 -2em -1em;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    
+    &:before {
+      content: '';
+      display: block;
+      background: url(<%= asset_path "grad-top.png" %>) top repeat-x;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      left: 0;
+      top: 0;
+    }
+    
+    a, a:visited {
+      font-weight: bold;
+      color: #fff;
+      
+      &:hover { text-decoration: underline; }
+    }
+  }
 }
 
 
@@ -396,7 +552,7 @@ header {
 
 #slideshow {
   position: relative;
-  background: #f5f5f5;
+  background: #fff;
   border: 1px solid #e7e7e7;
   text-shadow: 0 1px 0 #fff;
   -moz-box-shadow: 0 0 5px #eee;
@@ -632,9 +788,12 @@ a.image {
       li {
         float: left;
         width: 47%;
-        background: #f9f9f9;
+        background: #fff;
         color: #777;
-        border: 1px solid #eee;
+        border: 1px solid #e8e8e8;
+        -webkit-box-shadow: 0px 0 6px rgba(100, 100, 100, 0.1);
+        -moz-box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+        box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);        
         padding: 10px;
         margin-bottom: 1em;
         list-style: none;
@@ -642,9 +801,9 @@ a.image {
         cursor: move;
         line-height: 1.2;
         font-size: 13px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
         height: 140px;
         overflow: hidden;
 
@@ -800,16 +959,6 @@ a.image {
 
   h6 {
     margin: 0 0 2px;
-  }
-}
-
-#links {
-  margin: 0 0 0 7px;
-
-  li {
-    list-style: none;
-    padding-left: 23px;
-    margin-bottom: 8px;
   }
 }
 
