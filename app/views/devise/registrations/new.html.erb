@@ -16,6 +16,13 @@
 
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
+      
+      <label>Account Type</label>
+      <select>
+        <option value="free">Free</option>
+        <option value="pro">Pro ($10/mo)</option>
+      </select>
+      
       <div><%= f.submit "Sign up", :class => 'button radius'%></div>
       
       <% end %>

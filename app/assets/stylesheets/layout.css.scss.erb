@@ -81,8 +81,6 @@ p {
   line-height: 1.5;
 }
 
-
-
 div.panel {
   background: #fff;
   border: 1px solid #eee;
@@ -106,6 +104,15 @@ div.panel {
 
 div.panel .columns {
   padding: 0;
+}
+
+.panel2 {
+  background: #fff;
+  padding: 0 0 1em 1em;
+  border: 1px solid #e4e4e4;
+  -webkit-box-shadow: 0px 0 6px rgba(100, 100, 100, 0.1);
+  -moz-box-shadow: 0px 0 6px rgba(100, 100, 100,0.1);
+  box-shadow: 0px 0 6px rgba(100, 100, 100,0.1); 
 }
 
 #main {
@@ -137,6 +144,9 @@ header {
   padding: 1em;
   height: 53px;
   margin-bottom: 2em;
+  -webkit-box-shadow: 0px 2px 3px rgba(100, 100, 100, 0.3);
+  -moz-box-shadow: 0px 2px 3px rgba(100, 100, 100,0.3);
+  box-shadow: 0px 2px 3px rgba(100, 100, 100,0.3); 
 
   h3 {
     color: #fff;
@@ -279,7 +289,9 @@ header {
   
   label { font-weight: bold; }
   
-  input { margin-bottom: 1.3em; }
+  input{ margin-bottom: 1.3em; }
+  
+  select { margin-bottom: 2.3em; }
   
   #signup-fields {
     border-right: 1px solid #eee;
@@ -383,6 +395,18 @@ header {
       
       &:hover { text-decoration: underline; }
     }
+  }
+}
+
+
+
+/* -----------------------------------------
+   Signup Page
+----------------------------------------- */
+
+.action-pricing {
+  ul {
+    margin-bottom: 1em;
   }
 }
 
@@ -969,6 +993,30 @@ a.image {
 
   h6 {
     margin: 0 0 2px;
+  }
+}
+
+
+/* -----------------------------------------
+   Map
+----------------------------------------- */
+
+.action-photo-slideshow {
+  img {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;  
+  }
+  
+  #current-slide {
+    position: relative;
+  }
+  
+  #caption {
+    position: absolute;
+    bottom: 1em;
+    padding: 1em;
+    background: #fff;
   }
 }
 
